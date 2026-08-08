@@ -22,14 +22,11 @@
      wipe transition, then navigates. Ctrl/Cmd/Shift/middle-click
      still opens a normal new tab (the wipe is skipped for those).
   3. TEAM PHOTO: reuses team-photo.jpg already in this repo.
-  4. OVERDRIVE PASS: custom magnetic cursor (desktop only), kinetic
-     word-reveal headline, drifting aurora gradient blobs, glass
-     path cards with an animated spinning gradient ring on hover,
-     a top scroll-progress bar, a floating side progress rail,
-     ambient particles in the hero, a two-row ticker scrolling in
-     opposite directions, and scroll reveals on every section.
-     Everything bows out gracefully under prefers-reduced-motion
-     and on touch devices.
+  4. BACK/FORWARD FIX: a "pageshow" listener resets the wipe overlay
+     any time this page is restored from the browser's back-forward
+     cache (bfcache). Without it, hitting Back after clicking a card
+     could show the page still covered by the wipe animation's end
+     state until a manual refresh.
   ============================================================
 -->
 <style>
@@ -663,6 +660,19 @@ document.querySelectorAll('.path-card').forEach(function(card){
     });
     setTimeout(function(){ window.location.href = target; }, prefersReducedMotion ? 0 : 620);
   });
+});
+
+/* BACK/FORWARD FIX: reset the wipe overlay whenever this page is (re)shown,
+   including when restored from the bfcache after hitting the browser Back
+   button. Without this, the overlay could still be sitting in its fully
+   expanded state from the last card click, making the page look frozen
+   until a manual refresh. */
+window.addEventListener('pageshow', function(){
+  const wipe = document.getElementById('wipe');
+  wipe.classList.remove('animate');
+  wipe.style.clipPath = 'circle(0% at 50% 50%)';
+  void wipe.offsetWidth; // force reflow so the next transition applies cleanly
+  wipe.classList.add('animate');
 });
 
 /* scroll cue: click to jump to cards, fade out once scrolled */
