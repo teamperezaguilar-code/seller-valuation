@@ -3,16 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How Much Home Can You Afford? | Team Perez Aguilar</title>
-<!--
-  ============================================================
-  UPDATE NOTE (delete before publishing to GitHub Pages)
-  ============================================================
-  Formspree endpoint updated to https://formspree.io/f/mqpzegyv
-  (previously mrpzegna). All other content, styling, and behavior
-  is unchanged from the original buyer-landing.html in this repo.
-  ============================================================
--->
+<title>Estimate How Much Home You Can Afford | Team Perez Aguilar</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -155,28 +146,29 @@ footer{padding:32px 0 48px;}
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow i18n" data-en="Free Affordability Estimate" data-es="Estimación Gratuita de Poder Adquisitivo"></div>
-    <h1 class="i18n" data-en="How much home can you actually afford?" data-es="¿Cuánta casa puede pagar realmente?"></h1>
+    <h1 class="i18n" data-en="Estimate how much home you can afford." data-es="Calcule cuánta casa puede pagar."></h1>
     <p class="hero-sub i18n" data-en="A quick, honest estimate based on your income and down payment, no credit check, no obligation." data-es="Una estimación rápida y honesta basada en sus ingresos y su enganche, sin revisión de crédito, sin obligación."></p>
 
     <div class="instrument">
+      <p class="i18n" style="font-size:0.82rem;color:#6b7280;margin-bottom:16px;font-style:italic;" data-en="This calculator is for illustrative purposes only." data-es="Esta calculadora es solo para fines ilustrativos."></p>
       <div class="instrument-label i18n" data-en="Your numbers" data-es="Sus números"></div>
 
       <div class="calc-grid">
         <div class="calc-field">
           <label class="i18n" data-en="Annual household income" data-es="Ingreso anual del hogar"></label>
-          <input type="text" id="field-income" inputmode="numeric" placeholder="$85,000" required>
+          <input type="text" id="field-income" inputmode="numeric" required>
         </div>
         <div class="calc-field">
-          <label class="i18n" data-en="Down payment saved" data-es="Enganche ahorrado"></label>
-          <input type="text" id="field-downpayment" inputmode="numeric" placeholder="$25,000" required>
+          <label class="i18n" data-en="Estimated down payment" data-es="Enganche estimado"></label>
+          <input type="text" id="field-downpayment" inputmode="numeric" required>
         </div>
         <div class="calc-field">
           <label class="i18n" data-en="Monthly debt payments (car, student loans, credit cards)" data-es="Pagos mensuales de deudas (auto, préstamos estudiantiles, tarjetas)"></label>
-          <input type="text" id="field-debts" inputmode="numeric" placeholder="$400" required>
+          <input type="text" id="field-debts" inputmode="numeric" required>
         </div>
         <div class="calc-field">
-          <label class="i18n" data-en="Estimated interest rate" data-es="Tasa de interés estimada"></label>
-          <input type="text" id="field-rate" inputmode="decimal" placeholder="7.0%" required>
+          <label class="i18n" data-en="Illustrative interest rate" data-es="Tasa de interés ilustrativa"></label>
+          <input type="text" id="field-rate" inputmode="decimal" required>
         </div>
       </div>
 
@@ -189,13 +181,19 @@ footer{padding:32px 0 48px;}
           <div class="result-range" id="range-display">$0 – $0</div>
           <div class="result-sub i18n" data-en="Estimated monthly payment (principal, interest, taxes, insurance)" data-es="Pago mensual estimado (capital, interés, impuestos, seguro)"></div>
           <div class="result-range" id="payment-display" style="font-size:1.3rem;">$0/mo</div>
+          <p style="font-size:0.82rem;color:#6b7280;font-style:italic;margin-bottom:14px;" class="i18n" data-en="This calculator is provided for informational and educational purposes only. Full disclosure below.*" data-es="Esta calculadora se proporciona únicamente con fines informativos y educativos. Divulgación completa a continuación.*"></p>
           <p class="result-note i18n" data-en="This estimate uses common lending guidelines and a general interest rate. Fernando can confirm your real rate and exact buying power with a quick pre-approval conversation, no cost, no obligation." data-es="Esta estimación usa pautas de préstamo comunes y una tasa de interés general. Fernando puede confirmar su tasa real y su poder de compra exacto con una breve conversación de preaprobación, sin costo, sin obligación."></p>
 
           <div class="guide-gate">
-            <div class="guide-gate-label i18n" data-en="Free Download" data-es="Descarga Gratuita"></div>
-            <div class="guide-gate-title i18n" data-en="Get the First-Time Buyer's Guide + your personalized results" data-es="Obtenga la Guía del Comprador Primerizo + sus resultados personalizados"></div>
+            <div class="guide-gate-title i18n" data-en="How Can We Help Today?" data-es="¿Cómo Podemos Ayudarle Hoy?"></div>
 
             <form id="guide-form">
+              <select id="guide-help-type" required>
+                <option value="" disabled selected class="i18n" data-en="Select one" data-es="Seleccione una opción"></option>
+                <option value="First-time buyer's guide" class="i18n" data-en="First-time buyer's guide" data-es="Guía del comprador primerizo"></option>
+                <option value="Send me a list of homes in my price range" class="i18n" data-en="Send me a list of homes in my price range" data-es="Envíenme una lista de casas en mi rango de precio"></option>
+                <option value="Pre-qualification consultation" class="i18n" data-en="Pre-qualification consultation" data-es="Consulta de precalificación"></option>
+              </select>
               <input type="text" id="guide-name" placeholder="Full name" required>
               <input type="email" id="guide-email" placeholder="Email" required>
               <input type="tel" id="guide-phone" placeholder="Phone" required>
@@ -211,17 +209,26 @@ footer{padding:32px 0 48px;}
                 <input type="checkbox" id="guide-sms-consent" required>
                 <span class="i18n" data-en="I agree to receive texts and emails from Team Perez Aguilar about my request. Message and data rates may apply. Reply STOP to opt out." data-es="Acepto recibir mensajes de texto y correos de Team Perez Aguilar sobre mi solicitud. Pueden aplicar tarifas de mensajes y datos. Responda ALTO para dejar de recibir mensajes."></span>
               </label>
-              <button type="submit" class="btn btn-secondary i18n" data-en="Send Me the Guide" data-es="Envíenme la Guía" style="background:transparent;border-color:var(--white);color:var(--white);"></button>
+              <button type="submit" class="btn btn-secondary i18n" data-en="Submit" data-es="Enviar" style="background:transparent;border-color:var(--white);color:var(--white);"></button>
             </form>
 
             <div id="guide-confirmation">
               <div class="confirm-title i18n" data-en="Check your email" data-es="Revise su correo"></div>
-              <p class="confirm-body i18n" data-en="Your guide is on its way, and Silvia or Fernando will follow up within one business day." data-es="Su guía está en camino, y Silvia o Fernando se pondrán en contacto dentro de un día hábil."></p>
+              <p class="confirm-body i18n" data-en="We've got your request, and Silvia or Fernando will follow up within one business day." data-es="Ya recibimos su solicitud, y Silvia o Fernando se pondrán en contacto dentro de un día hábil."></p>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding:0 24px 40px;">
+  <div style="background:var(--paper-raised);border:1px solid var(--line);border-radius:2px;padding:26px 28px;text-align:center;">
+    <p style="font-size:1rem;color:var(--ink);margin-bottom:16px;" class="i18n"
+      data-en="Ready to take the next step? Start your loan application online, it only takes a few minutes, and it goes straight to Fernando, who will personally follow up with you."
+      data-es="¿Listo para dar el siguiente paso? Comience su solicitud de préstamo en línea, solo toma unos minutos, y llega directamente a Fernando, quien se pondrá en contacto con usted personalmente."></p>
+    <a href="https://myloan.goalterra.com/homehub/signup/fperez@goalterra.com?from_mobile_share=true" target="_blank" rel="noopener noreferrer" class="btn i18n" style="display:inline-block;width:auto;padding:14px 32px;text-decoration:none;" data-en="Start My Loan Application" data-es="Comenzar Mi Solicitud de Préstamo"></a>
   </div>
 </section>
 
@@ -269,13 +276,50 @@ footer{padding:32px 0 48px;}
 
 <footer>
   <div class="wrap">
+
+    <div style="display:flex;gap:24px;align-items:center;margin-bottom:20px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7A8494" stroke-width="1.6" aria-label="Equal Housing Opportunity">
+          <path d="M3 11l9-7 9 7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 10v9h14v-9" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="8.5" y1="14.5" x2="15.5" y2="14.5" stroke-linecap="round"/>
+          <line x1="8.5" y1="17" x2="15.5" y2="17" stroke-linecap="round"/>
+        </svg>
+        <span style="font-size:0.68rem;color:#7A8494;line-height:1.2;max-width:120px;" class="i18n" data-en="Equal Housing Opportunity" data-es="Igualdad de Oportunidad de Vivienda"></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7A8494" stroke-width="1.6" aria-label="Equal Opportunity Lender">
+          <path d="M3 11l9-7 9 7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 10v9h14v-9" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="8.5" y1="14.5" x2="15.5" y2="14.5" stroke-linecap="round"/>
+          <line x1="8.5" y1="17" x2="15.5" y2="17" stroke-linecap="round"/>
+        </svg>
+        <span style="font-size:0.68rem;color:#7A8494;line-height:1.2;max-width:120px;" class="i18n" data-en="Equal Opportunity Lender" data-es="Prestamista de Igualdad de Oportunidades"></span>
+      </div>
+    </div>
+
     <p class="footer-fine i18n"
-      data-en="Equal Housing Opportunity. This is an estimate only, based on general lending guidelines, and is not a pre-approval, loan offer, or guarantee of financing. Actual buying power depends on full underwriting."
-      data-es="Igualdad de Oportunidad de Vivienda. Esto es solo una estimación, basada en pautas generales de préstamo, y no es una preaprobación, oferta de préstamo, ni garantía de financiamiento. El poder de compra real depende de una evaluación crediticia completa."></p>
+      data-en="Equal Housing Opportunity. Equal Opportunity Lender. This is an estimate only, based on general lending guidelines, and is not a pre-approval, loan offer, or guarantee of financing. All loans are subject to credit approval, underwriting guidelines, and property appraisal. Actual buying power depends on full underwriting."
+      data-es="Igualdad de Oportunidad de Vivienda. Prestamista de Igualdad de Oportunidades. Esto es solo una estimación, basada en pautas generales de préstamo, y no es una preaprobación, oferta de préstamo, ni garantía de financiamiento. Todos los préstamos están sujetos a aprobación de crédito, pautas de suscripción y tasación de la propiedad. El poder de compra real depende de una evaluación crediticia completa."></p>
+
     <p class="footer-fine i18n"
-      data-en="Team Perez Aguilar | Silvia Aguilar, DRE License #01745879 | Loan services provided by Fernando Perez, NMLS #1011109 | San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340 | Licensed in the State of California."
-      data-es="Team Perez Aguilar | Silvia Aguilar, Licencia DRE #01745879 | Servicios de préstamo proporcionados por Fernando Pérez, NMLS #1011109 | San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340 | Con licencia en el Estado de California."></p>
+      data-en="Team Perez Aguilar"
+      data-es="Team Perez Aguilar"
+      style="font-weight:600;margin-top:14px;"></p>
+
+    <p class="footer-fine i18n"
+      data-en="Silvia Aguilar, Agent | DRE License #01745879 | Corporate License ID: 01167079 | San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340 | Licensed in the State of California."
+      data-es="Silvia Aguilar, Agente | Licencia DRE #01745879 | ID de Licencia Corporativa: 01167079 | San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340 | Con licencia en el Estado de California."></p>
+
+    <p class="footer-fine i18n"
+      data-en="Fernando Perez, Loan Officer | NMLS #1011109 | Alterra Home Loans, 17046 Devonshire Street, Northridge, CA 91325 | Alterra Home Loans NMLS #133739."
+      data-es="Fernando Pérez, Oficial de Préstamos | NMLS #1011109 | Alterra Home Loans, 17046 Devonshire Street, Northridge, CA 91325 | Alterra Home Loans NMLS #133739."></p>
+
     <p class="footer-fine"><a href="privacy-policy.html" id="privacy-link" class="i18n" data-en="Privacy Policy" data-es="Política de Privacidad" style="color:inherit;"></a></p>
+
+    <p class="footer-fine i18n" style="margin-top:16px;font-style:italic;"
+      data-en="*This calculator is provided for informational and educational purposes only. Results are estimates and do not constitute an offer to lend, loan approval, prequalification, preapproval, or commitment to extend credit. Actual loan eligibility, interest rate, APR, loan amount, monthly payment, closing costs, mortgage insurance, property taxes, homeowners insurance and other terms may vary based on credit history, income, assets, debts, property, loan program and lender requirements. Consult a licensed mortgage loan originator for actual loan terms and qualification."
+      data-es="*Esta calculadora se proporciona únicamente con fines informativos y educativos. Los resultados son estimaciones y no constituyen una oferta de préstamo, aprobación de préstamo, precalificación, preaprobación, ni compromiso de otorgar crédito. La elegibilidad real del préstamo, la tasa de interés, la TAE (APR), el monto del préstamo, el pago mensual, los costos de cierre, el seguro hipotecario, los impuestos a la propiedad, el seguro de vivienda y otros términos pueden variar según el historial crediticio, los ingresos, los activos, las deudas, la propiedad, el programa de préstamo y los requisitos del prestamista. Consulte a un originador de préstamos hipotecarios con licencia para conocer los términos reales del préstamo y la calificación."></p>
   </div>
 </footer>
 
@@ -380,6 +424,7 @@ document.getElementById('guide-form').addEventListener('submit', async function(
   submitBtn.textContent = currentLang === 'es' ? 'Enviando…' : 'Sending…';
 
   const payload = {
+    help_type: document.getElementById('guide-help-type').value,
     name: document.getElementById('guide-name').value.trim(),
     email: document.getElementById('guide-email').value.trim(),
     phone: document.getElementById('guide-phone').value.trim(),
@@ -393,7 +438,7 @@ document.getElementById('guide-form').addEventListener('submit', async function(
 
   let ok = false;
   try{
-    const response = await fetch('https://formspree.io/f/mqpzegyv', {
+    const response = await fetch('https://formspree.io/f/mrpzegna', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
