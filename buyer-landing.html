@@ -9,12 +9,12 @@
 
 :root{
   --ink:#1C2B3A;
-  --paper:#E8EDF2;
-  --paper-raised:#F5F7FA;
+  --paper:#E6EBE2;
+  --paper-raised:#F1F5ED;
   --brass:#A8823D;
   --brass-deep:#8A6B2E;
   --pine:#3D4F3F;
-  --line:#C9D3DC;
+  --line:#C8D2C4;
   --white:#FFFDF8;
 }
 
@@ -57,7 +57,7 @@ h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:500;font-si
 .hero-sub{font-size:1.05rem;max-width:48ch;color:#39485a;margin-bottom:36px;}
 .hero-sub strong{color:var(--ink);font-weight:600;}
 
-.instrument{background:var(--paper-raised);border:1px solid var(--line);border-radius:2px;padding:28px;box-shadow:0 1px 0 var(--line);}
+.instrument{background:var(--paper-raised);border:1px solid var(--line);border-top:3px solid var(--brass);border-radius:2px;padding:28px;box-shadow:0 1px 0 var(--line);}
 .instrument-label{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--pine);margin-bottom:18px;}
 
 .calc-grid{display:grid;gap:16px;grid-template-columns:1fr;margin-bottom:8px;}
@@ -80,6 +80,10 @@ h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:500;font-si
 .btn:focus-visible{outline:2px solid var(--brass);outline-offset:2px;}
 .btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);}
 .btn-secondary:hover{background:var(--ink);color:var(--white);}
+#calc-btn{background:var(--brass);}
+#calc-btn:hover{background:var(--brass-deep);}
+.btn-pine{background:var(--pine);}
+.btn-pine:hover{background:#2c3a2e;}
 
 .instrument-fine{font-size:0.8rem;color:#6b7280;margin-top:12px;}
 
@@ -268,12 +272,12 @@ footer{padding:32px 0 48px;}
 </section>
 
 <section class="wrap" style="padding:0 24px 40px;">
-  <div style="background:var(--paper-raised);border:1px solid var(--line);border-radius:2px;padding:26px 28px;text-align:center;">
+  <div style="background:var(--paper-raised);border:1px solid var(--line);border-top:3px solid var(--pine);border-radius:2px;padding:26px 28px;text-align:center;">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:10px;" class="i18n" data-en="Fernando Perez, Loan Officer" data-es="Fernando Pérez, su agente de préstamos"></div>
     <p style="font-size:1rem;color:var(--ink);margin-bottom:16px;" class="i18n"
       data-en="Ready to take the next step? Start your loan application online, it only takes a few minutes, and it goes straight to Fernando, who will personally follow up with you."
       data-es="¿Listo para dar el siguiente paso? Comience su solicitud de préstamo en línea, solo toma unos minutos, y llega directamente a Fernando, quien se pondrá en contacto con usted personalmente."></p>
-    <a href="https://myloan.goalterra.com/homehub/signup/fperez@goalterra.com?from_mobile_share=true" target="_blank" rel="noopener noreferrer" class="btn i18n" style="display:inline-block;width:auto;padding:14px 32px;text-decoration:none;" data-en="Start My Loan Application" data-es="Comenzar Mi Solicitud de Préstamo"></a>
+    <a href="https://myloan.goalterra.com/homehub/signup/fperez@goalterra.com?from_mobile_share=true" target="_blank" rel="noopener noreferrer" class="btn btn-pine i18n" style="display:inline-block;width:auto;padding:14px 32px;text-decoration:none;" data-en="Start My Loan Application" data-es="Comenzar Mi Solicitud de Préstamo"></a>
   </div>
 </section>
 
