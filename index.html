@@ -354,6 +354,824 @@ h1{
   flex:none;
 }
 .pro-logo-slot img{max-width:100%;max-height:100%;display:block;}
+.pro-logo-slot--sfr{padding:2px 4px;}
+
+/* footer */
+footer{padding:32px 0 48px;}
+.footer-fine{font-size:0.76rem;color:#7A8494;line-height:1.6;max-width:74ch;}
+.footer-fine + .footer-fine{margin-top:10px;}
+
+.compliance-badges{display:flex;flex-wrap:wrap;gap:24px;margin:22px 0;align-items:center;}
+.compliance-badge{display:flex;gap:12px;align-items:center;max-width:340px;min-height:56px;}
+.compliance-badge svg{flex:none;width:34px;height:34px;}
+.compliance-badge-title{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;font-weight:600;}
+.compliance-badge-body{font-size:0.76rem;color:#7A8494;line-height:1.5;}
+.compliance-badge-logo-item{max-width:none;align-items:center;min-height:56px;}
+.compliance-logo-img{height:56px;width:auto;display:block;}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-topo path, .eyebrow, h1, .word-inner, .hero-sub, .path-card, .scroll-cue, .ticker-track,
+  .path-icon svg path, .path-icon svg circle, .aurora span, .path-card .ring, .reveal{
+    animation:none !important;opacity:1 !important;transform:none !important;stroke-dashoffset:0 !important;
+  }
+  .reveal{transition:none !important;}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="wipe" id="wipe"></div>
+
+<nav class="rail" id="rail" aria-label="Section navigation">
+  <button data-target="hero" class="active" aria-label="Hero"></button>
+  <button data-target="stats" aria-label="Stats"></button>
+  <button data-target="team" aria-label="Team"></button>
+  <button data-target="site-footer" aria-label="Footer"></button>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="brandmark">Team Perez<span>&nbsp;Aguilar</span></div>
+    <div class="header-right">
+      <div class="social-links">
+        <a href="https://www.instagram.com/teamperezaguilar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/TeamPerezAguilar" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="https://www.tiktok.com/@teamperezaguilar" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.3 2 4.1 4.5 4.4v2.6c-1.6-.1-3.1-.6-4.5-1.5v6.2a5.3 5.3 0 1 1-5.3-5.3c.3 0 .6 0 .9.1v2.7a2.6 2.6 0 1 0 1.8 2.5V3h2.6z"/></svg></a>
+        <a href="https://www.linkedin.com/in/teamperezaguilar" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="5.5" y="9.5" width="2.2" height="9" fill="currentColor"/><circle cx="6.6" cy="6" r="1.3" fill="currentColor"/><path d="M10.5 9.5h2.1v1.3c.5-.8 1.4-1.5 2.9-1.5 2.2 0 3.4 1.4 3.4 4.1v5.1h-2.2v-4.6c0-1.4-.5-2.3-1.7-2.3-1 0-1.6.7-1.8 1.3-.1.2-.1.5-.1.8v4.8h-2.2z" fill="currentColor"/></svg></a>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+        <button class="lang-btn" id="btn-es" data-lang="es">ES</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <canvas id="particles"></canvas>
+
+  <svg class="hero-topo" id="hero-topo" viewBox="0 0 1080 260" preserveAspectRatio="none" role="presentation" aria-hidden="true">
+    <path d="M0,180 Q90,130 180,168 T360,156 T540,180" fill="none" stroke="#1C2B3A" stroke-width="2" opacity="0.35"/>
+    <path d="M220,205 Q320,150 420,188 T620,180 T780,202" fill="none" stroke="#3D4F3F" stroke-width="2" opacity="0.35"/>
+    <path d="M480,165 Q580,115 680,150 T880,140 T1080,163" fill="none" stroke="#A8823D" stroke-width="2" opacity="0.4"/>
+    <path d="M650,222 Q760,185 860,212 T1080,218" fill="none" stroke="#8A6B2E" stroke-width="2" opacity="0.3"/>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <div class="eyebrow i18n" data-en="San Fernando Valley · Santa Clarita Valley · Antelope Valley · LA County" data-es="San Fernando Valley · Santa Clarita Valley · Antelope Valley · LA County"></div>
+    <h1 id="hero-title" data-en="What brings you here today?" data-es="¿Qué le trae por aquí hoy?"></h1>
+    <p class="hero-sub i18n" data-en="Pick the path that fits and we'll take you to the right tool." data-es="Elija el camino que corresponda y lo llevaremos a la herramienta correcta."></p>
+
+    <div class="path-grid" id="path-grid">
+      <a class="path-card accent-pine" id="card-buy" data-base-href="https://teamperezaguilar-code.github.io/seller-valuation/buyer-landing" href="https://teamperezaguilar-code.github.io/seller-valuation/buyer-landing">
+        <span class="ring"></span>
+        <span class="sheen"></span>
+        <div class="path-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M14.5 19.5V14h-5v5.5"/><path d="M15 8.5 18 5.5"/><path d="M18 8V5h-3"/></svg>
+        </div>
+        <div class="path-kicker i18n" data-en="Buy" data-es="Comprar"></div>
+        <div class="path-title i18n" data-en="I want to buy a home" data-es="Quiero comprar una casa"></div>
+        <div class="path-body i18n" data-en="See what you can actually afford, in about 30 seconds, no credit check." data-es="Vea lo que realmente puede pagar, en unos 30 segundos, sin revisión de crédito."></div>
+        <div class="path-cta"><span class="i18n" data-en="Calculate My Buying Power" data-es="Calcular Mi Poder de Compra"></span><span class="path-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
+      </a>
+
+      <a class="path-card accent-brass" id="card-sell" data-base-href="https://teamperezaguilar-code.github.io/seller-valuation/valuation-landing-bilingual" href="https://teamperezaguilar-code.github.io/seller-valuation/valuation-landing-bilingual">
+        <span class="ring"></span>
+        <span class="sheen"></span>
+        <div class="path-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M9.5 15.5h5"/><path d="M12 13v5"/><circle cx="18" cy="6" r="2.3"/></svg>
+        </div>
+        <div class="path-kicker i18n" data-en="Sell" data-es="Vender"></div>
+        <div class="path-title i18n" data-en="I want to sell my home" data-es="Quiero vender mi casa"></div>
+        <div class="path-body i18n" data-en="Get an instant value range for your home, based on your street, not just your zip code." data-es="Obtenga un promedio de valor instantáneo para su casa, basado en su vecindario, no solo en su código postal."></div>
+        <div class="path-cta"><span class="i18n" data-en="Get My Estimate" data-es="Obtener Mi Estimado"></span><span class="path-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
+      </a>
+
+      <a class="path-card" id="card-shortsale" data-base-href="https://teamperezaguilar-code.github.io/seller-valuation/short-sale-landing-bilingual" href="https://teamperezaguilar-code.github.io/seller-valuation/short-sale-landing-bilingual">
+        <span class="ring"></span>
+        <span class="sheen"></span>
+        <div class="path-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M12 13.3v3.4"/><path d="M12 18.7v.3"/><circle cx="12" cy="15.8" r="4.2"/></svg>
+        </div>
+        <div class="path-kicker i18n" data-en="Behind on Mortgage" data-es="Atrasado con la Hipoteca"></div>
+        <div class="path-title i18n" data-en="I'm behind on my mortgage" data-es="Estoy atrasado con mi hipoteca"></div>
+        <div class="path-body i18n" data-en="See your options before foreclosure. Confidential, no cost, no judgment." data-es="Vea sus opciones antes de la ejecución hipotecaria. Confidencial, sin costo, sin juicios."></div>
+        <div class="path-cta"><span class="i18n" data-en="Check My Eligibility" data-es="Revisar Mi Elegibilidad"></span><span class="path-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
+      </a>
+    </div>
+
+    <div class="scroll-cue" id="scroll-cue">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15"/><path d="m6 14 6 6 6-6"/></svg>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-stack">
+  <div class="ticker">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+  <div class="ticker reverse">
+    <div class="ticker-track" id="ticker-track-reverse"></div>
+  </div>
+</div>
+
+<section class="trust-bar reveal" id="stats">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-num" data-count="40" data-suffix="+">0</div>
+        <div class="trust-label i18n" data-en="Years combined experience" data-es="Años de experiencia combinada"></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num" data-count="2" data-suffix="">0</div>
+        <div class="trust-label i18n" data-en="Licensed broker & loan officer, one team" data-es="Agente de Bienes Raices y Agente de Préstamos, un mismo equipo"></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num" data-count="4" data-suffix="">0</div>
+        <div class="trust-label i18n" data-en="Markets served daily" data-es="Mercados atendidos a diario"></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num" data-count="0" data-suffix="">0</div>
+        <div class="trust-label i18n" data-en="Cost or obligation to you" data-es="Costo u obligación para usted"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team reveal" id="team">
+  <div class="wrap">
+    <div class="section-head i18n" data-en="Who you're working with" data-es="Con quién está trabajando"></div>
+
+    <div class="team-grid">
+      <div class="team-left">
+        <div class="team-photo-wrap">
+          <img src="team-photo.jpg" alt="Silvia Aguilar and Fernando Perez, Team Perez Aguilar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-photo-fallback">Team Perez Aguilar</div>
+        </div>
+        <p class="team-body i18n"
+          data-en="Team Perez Aguilar brings over 40 years of combined experience across San Fernando Valley, Santa Clarita Valley, Antelope Valley, and LA County. Broker Associate, Silvia Aguilar works closely with Loan Officer Fernando Perez, so buying, selling, and financing questions all get answered by people who already work together."
+          data-es="Team Perez Aguilar aporta más de 40 años de experiencia combinada en San Fernando Valley, Santa Clarita Valley, Antelope Valley y LA County. Agente de Bienes Raices, Silvia Aguilar trabaja de cerca con el Agente de Préstamos Fernando Pérez, para que sus preguntas de compra, venta y financiamiento sean respondidas por personas que ya trabajan juntas."></p>
+        <div class="team-tags">
+          <span class="tag i18n" data-en="First-time buyers" data-es="Compradores primerizos"></span>
+          <span class="tag i18n" data-en="Relocations" data-es="Reubicaciones"></span>
+          <span class="tag i18n" data-en="Resales" data-es="Reventas"></span>
+          <span class="tag i18n" data-en="Short sales" data-es="Ventas cortas"></span>
+        </div>
+      </div>
+
+      <div class="team-right">
+        <div class="pro-cards">
+          <div class="pro-card">
+            <div class="pro-card-top">
+              <div>
+                <div class="pro-card-name">Silvia Aguilar</div>
+                <div class="pro-card-role i18n" data-en="Broker Associate" data-es="Agente de Bienes Raices"></div>
+              </div>
+              <div class="pro-logo-slot pro-logo-slot--sfr"><img src="sfr-logo.png" alt="San Fernando Realty"></div>
+            </div>
+            <div class="pro-card-row"><strong class="i18n" data-en="DRE License:" data-es="Licencia DRE:"></strong> #01745879</div>
+            <div class="pro-card-row"><strong class="i18n" data-en="Brokerage:" data-es="Correduría:"></strong> San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340</div>
+            <div class="pro-card-row"><strong class="i18n" data-en="Corporate License ID:" data-es="ID de Licencia Corporativa:"></strong> 01167079</div>
+          </div>
+
+          <div class="pro-card">
+            <div class="pro-card-top">
+              <div>
+                <div class="pro-card-name">Fernando Perez</div>
+                <div class="pro-card-role i18n" data-en="Loan Officer" data-es="Agente de Préstamos"></div>
+              </div>
+              <div class="pro-logo-slot"><img src="alterra-logo.png" alt="Alterra Home Loans"></div>
+            </div>
+            <div class="pro-card-row"><strong>NMLS:</strong> #1011109</div>
+            <div class="pro-card-row"><strong class="i18n" data-en="Company:" data-es="Compañía:"></strong> Alterra Home Loans, 17046 Devonshire Street, Northridge, CA 91325</div>
+            <div class="pro-card-row"><strong class="i18n" data-en="Company NMLS:" data-es="NMLS de la Empresa:"></strong> Alterra Home Loans NMLS #133739</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="reveal" id="site-footer">
+  <div class="wrap">
+    <p class="footer-fine i18n"
+      data-en="Tools on this site provide preliminary estimates only, based on available data and general guidelines. They are not appraisals, pre-approvals, loan offers, or a lender's determination of eligibility. Actual results depend on your specific circumstances."
+      data-es="Las herramientas de este sitio ofrecen estimaciones preliminares únicamente, basadas en datos disponibles y pautas generales. No son tasaciones, preaprobaciones, ofertas de préstamo, ni una determinación de elegibilidad por parte del prestamista. Los resultados reales dependen de sus circunstancias específicas."></p>
+
+    <div class="compliance-badges">
+      <div class="compliance-badge">
+        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" rx="3" stroke="#1C2B3A" stroke-width="1.4"/>
+          <path d="M8 21 20 10l12 11" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 19v11h18V19" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="15" y1="24.5" x2="25" y2="24.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="15" y1="27.5" x2="25" y2="27.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="compliance-badge-title i18n" data-en="Equal Housing Opportunity" data-es="Igualdad de Oportunidad de Vivienda"></div>
+          <div class="compliance-badge-body i18n" data-en="In accordance with the Federal Fair Housing Act, San Fernando Realty does not discriminate on the basis of race, color, religion, sex, handicap, familial status, or national origin in the sale, rental, or financing of housing." data-es="Conforme con la Ley Federal de Vivienda Justa, San Fernando Realty no discrimina por motivos de raza, color, religión, sexo, discapacidad, estado familiar u origen nacional en la venta, alquiler o financiamiento de vivienda."></div>
+        </div>
+      </div>
+
+      <div class="compliance-badge">
+        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" rx="3" stroke="#1C2B3A" stroke-width="1.4"/>
+          <path d="M8 21 20 10l12 11" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 19v11h18V19" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="15" y1="24.5" x2="25" y2="24.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="15" y1="27.5" x2="25" y2="27.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="compliance-badge-title i18n" data-en="Equal Opportunity Lender" data-es="Prestamista de Igualdad de Oportunidades"></div>
+          <div class="compliance-badge-body i18n" data-en="Alterra Home Loans, NMLS #133739, is an Equal Opportunity Lender. This is not a commitment to lend; all loans are subject to underwriting and credit approval." data-es="Alterra Home Loans, NMLS #133739, es un Prestamista de Igualdad de Oportunidades. Esto no es un compromiso de préstamo; todos los préstamos están sujetos a evaluación y aprobación crediticia."></div>
+        </div>
+      </div>
+
+      <div class="compliance-badge compliance-badge-logo-item">
+        <img src="realtor-mls-logo.png" alt="REALTOR, Multiple Listing Service" class="compliance-logo-img">
+      </div>
+    </div>
+
+    <p class="footer-fine"><a href="privacy-policy.html" id="privacy-link" class="i18n" data-en="Privacy Policy" data-es="Política de Privacidad" style="color:inherit;"></a></p>
+  </div>
+</footer>
+
+<script>
+let currentLang = 'en';
+
+const cardLinks = [
+  { id: 'card-buy', base: 'https://teamperezaguilar-code.github.io/seller-valuation/buyer-landing' },
+  { id: 'card-sell', base: 'https://teamperezaguilar-code.github.io/seller-valuation/valuation-landing-bilingual' },
+  { id: 'card-shortsale', base: 'https://teamperezaguilar-code.github.io/seller-valuation/short-sale-landing-bilingual' }
+];
+
+const tickerWords = {
+  en: ["Free", "Confidential", "No Obligation", "San Fernando Valley", "Santa Clarita Valley", "Antelope Valley", "LA County"],
+  es: ["Gratis", "Confidencial", "Sin Obligación", "San Fernando Valley", "Santa Clarita Valley", "Antelope Valley", "LA County"]
+};
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const supportsHover = window.matchMedia('(hover: hover)').matches;
+
+function buildTicker(lang){
+  const words = tickerWords[lang];
+  const doubled = words.concat(words);
+  const html = doubled.map(function(w){
+    return '<span class="ticker-item"><span class="dot">&#9670;</span>' + w + '</span>';
+  }).join('');
+  document.getElementById('ticker-track').innerHTML = html;
+  document.getElementById('ticker-track-reverse').innerHTML = html;
+}
+
+function updateCardHrefs(lang){
+  cardLinks.forEach(function(c){
+    const el = document.getElementById(c.id);
+    if(el){ el.href = c.base + '?lang=' + lang; }
+  });
+}
+
+function revealHeadline(text){
+  const h1 = document.getElementById('hero-title');
+  h1.innerHTML = text.split(' ').map(function(word, i){
+    return '<span class="word-mask"><span class="word-inner" style="animation-delay:' + (0.05 + i * 0.055) + 's">' + word + '&nbsp;</span></span>';
+  }).join('');
+}
+
+function applyLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.i18n').forEach(function(el){
+    el.textContent = el.dataset[lang];
+  });
+  const h1 = document.getElementById('hero-title');
+  revealHeadline(h1.dataset[lang]);
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  const privacyLink = document.getElementById('privacy-link');
+  if(privacyLink){ privacyLink.href = 'privacy-policy.html?lang=' + lang; }
+  updateCardHrefs(lang);
+  buildTicker(lang);
+}
+
+document.getElementById('btn-en').addEventListener('click', function(){ applyLang('en'); });
+document.getElementById('btn-es').addEventListener('click', function(){ applyLang('es'); });
+
+function detectLang(){
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if(urlLang === 'es' || urlLang === 'en'){ return urlLang; }
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  if(browserLang.startsWith('es')){ return 'es'; }
+  return 'en';
+}
+
+applyLang(detectLang());
+
+/* scroll progress bar */
+const scrollProgress = document.getElementById('scroll-progress');
+function updateScrollProgress(){
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - doc.clientHeight;
+  const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+  scrollProgress.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
+
+/* cursor-reactive glow behind hero (unrelated to the pointer icon itself) */
+const heroEl = document.getElementById('hero');
+if(supportsHover){
+  heroEl.addEventListener('mousemove', function(e){
+    const rect = heroEl.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    heroEl.style.setProperty('--mx', x + '%');
+    heroEl.style.setProperty('--my', y + '%');
+  });
+}
+
+/* subtle 3D tilt on path cards + spotlight dim on siblings */
+const pathGrid = document.getElementById('path-grid');
+document.querySelectorAll('.path-card').forEach(function(card){
+  card.addEventListener('mouseenter', function(){ pathGrid.classList.add('spotlight'); });
+  card.addEventListener('mouseleave', function(){ pathGrid.classList.remove('spotlight'); });
+  if(supportsHover){
+    card.addEventListener('mousemove', function(e){
+      const rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.setProperty('--tiltx', (px * 6) + 'deg');
+      card.style.setProperty('--tilty', (py * -6) + 'deg');
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.setProperty('--tiltx', '0deg');
+      card.style.setProperty('--tilty', '0deg');
+    });
+  }
+
+  /* circular wipe transition on plain left-click, normal behavior otherwise */
+  card.addEventListener('click', function(e){
+    if(e.defaultPrevented) return;
+    if(e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    const target = card.href;
+    const wipe = document.getElementById('wipe');
+    wipe.style.clipPath = 'circle(0% at ' + e.clientX + 'px ' + e.clientY + 'px)';
+    wipe.classList.add('animate');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        wipe.style.clipPath = 'circle(150% at ' + e.clientX + 'px ' + e.clientY + 'px)';
+      });
+    });
+    setTimeout(function(){ window.location.href = target; }, prefersReducedMotion ? 0 : 620);
+  });
+});
+
+/* BACK/FORWARD FIX: reset the wipe overlay whenever this page is (re)shown,
+   including when restored from the bfcache after hitting the browser Back
+   button. */
+window.addEventListener('pageshow', function(){
+  const wipe = document.getElementById('wipe');
+  wipe.classList.remove('animate');
+  wipe.style.clipPath = 'circle(0% at 50% 50%)';
+  void wipe.offsetWidth; // force reflow so the next transition applies cleanly
+  wipe.classList.add('animate');
+});
+
+/* scroll cue: click to jump to cards, fade out once scrolled */
+const scrollCue = document.getElementById('scroll-cue');
+scrollCue.addEventListener('click', function(){
+  pathGrid.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+});
+window.addEventListener('scroll', function(){
+  scrollCue.classList.toggle('hidden', window.scrollY > 120);
+}, { passive: true });
+
+/* gentle parallax on the ridgeline graphic */
+const heroTopo = document.getElementById('hero-topo');
+if(!prefersReducedMotion){
+  window.addEventListener('scroll', function(){
+    heroTopo.style.transform = 'translateY(' + (window.scrollY * 0.12) + 'px)';
+  }, { passive: true });
+}
+
+/* count-up stats + reveal-on-scroll for every major section */
+function animateCount(el){
+  const target = parseInt(el.dataset.count, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 900;
+  const start = performance.now();
+  function tick(now){
+    const progress = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(target * eased) + suffix;
+    if(progress < 1){ requestAnimationFrame(tick); }
+  }
+  requestAnimationFrame(tick);
+}
+
+const revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('is-visible');
+      if(entry.target.id === 'stats'){
+        document.querySelectorAll('.trust-num').forEach(animateCount);
+      }
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+
+/* side progress rail */
+const railButtons = document.querySelectorAll('.rail button');
+railButtons.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const targetEl = document.getElementById(btn.dataset.target);
+    if(targetEl){ targetEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' }); }
+  });
+});
+const railSections = ['hero', 'stats', 'team', 'site-footer'].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+const railObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      railButtons.forEach(function(btn){
+        btn.classList.toggle('active', btn.dataset.target === entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.5 });
+railSections.forEach(function(sec){ railObserver.observe(sec); });
+
+/* ambient particles */
+if(!prefersReducedMotion){
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas(){
+    canvas.width = heroEl.offsetWidth;
+    canvas.height = heroEl.offsetHeight;
+  }
+  function initParticles(){
+    particles = [];
+    const count = Math.round((canvas.width * canvas.height) / 45000);
+    for(let i = 0; i < count; i++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 1 + Math.random() * 1.8,
+        speed: 0.15 + Math.random() * 0.35,
+        drift: (Math.random() - 0.5) * 0.25,
+        alpha: 0.12 + Math.random() * 0.22
+      });
+    }
+  }
+  function drawParticles(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(function(p){
+      p.y -= p.speed;
+      p.x += p.drift;
+      if(p.y < -10){ p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(168,130,61,' + p.alpha + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  resizeCanvas();
+  initParticles();
+  drawParticles();
+  window.addEventListener('resize', function(){ resizeCanvas(); initParticles(); });
+}
+</script>
+
+</body>
+</html><style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@property --angle{
+  syntax:'<angle>';
+  inherits:false;
+  initial-value:0deg;
+}
+
+:root{
+  --ink:#1C2B3A;
+  --paper:#E8EDF2;
+  --paper-raised:#F5F7FA;
+  --brass:#A8823D;
+  --brass-deep:#8A6B2E;
+  --pine:#3D4F3F;
+  --line:#C9D3DC;
+  --white:#FFFDF8;
+  --mx:50%;
+  --my:50%;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+  overflow-x:hidden;
+  position:relative;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 32 32'%3E%3Cpath d='M5 17 16 6l11 11' fill='none' stroke='%238A6B2E' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 15v11h16V15' fill='rgba(168,130,61,0.32)' stroke='%238A6B2E' stroke-width='2.8' stroke-linejoin='round'/%3E%3C/svg%3E") 9 9, auto;
+}
+
+a, button, .path-card{
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 32 32'%3E%3Cpath d='M5 17 16 6l11 11' fill='none' stroke='%238A6B2E' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 15v11h16V15' fill='rgba(168,130,61,0.42)' stroke='%238A6B2E' stroke-width='2.6' stroke-linejoin='round'/%3E%3C/svg%3E") 11 11, pointer;
+}
+
+/* scroll progress bar */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg, var(--brass-deep), var(--brass));
+  z-index:1002;
+  transition:width 0.05s linear;
+}
+
+/* paper grain overlay */
+.grain-overlay{
+  position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* page wipe transition */
+.wipe{
+  position:fixed;inset:0;z-index:1003;
+  background:var(--ink);
+  clip-path:circle(0% at 50% 50%);
+  pointer-events:none;
+}
+.wipe.animate{transition:clip-path 0.65s cubic-bezier(.65,0,.35,1);}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+/* side progress rail */
+.rail{
+  position:fixed;
+  right:26px;top:50%;
+  transform:translateY(-50%);
+  z-index:50;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.rail button{
+  width:9px;height:9px;
+  border-radius:50%;
+  background:transparent;
+  border:1.5px solid var(--line);
+  padding:0;
+  transition:background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.rail button.active{
+  background:var(--brass-deep);
+  border-color:var(--brass-deep);
+  transform:scale(1.3);
+}
+@media(max-width:959px){.rail{display:none;}}
+
+/* header */
+header{padding:20px 0;border-bottom:1px solid var(--line);position:relative;z-index:10;background:var(--paper);}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.brandmark{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;letter-spacing:0.01em;}
+.brandmark span{color:var(--brass-deep);}
+.header-right{display:flex;align-items:center;gap:18px;}
+.social-links{display:flex;gap:14px;align-items:center;}
+.social-link{color:#5a6472;display:flex;transition:color 0.15s ease;}
+.social-link svg{width:22px;height:22px;display:block;}
+.social-link:hover{color:var(--brass-deep);}
+
+.lang-toggle{display:flex;border:1px solid var(--ink);border-radius:2px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.05em;}
+.lang-btn{padding:6px 12px;background:transparent;border:none;color:var(--ink);}
+.lang-btn.active{background:var(--ink);color:var(--white);}
+.lang-btn:focus-visible{outline:2px solid var(--brass);outline-offset:-2px;}
+
+/* hero */
+.hero{
+  position:relative;
+  padding:80px 0 56px;
+  overflow:hidden;
+  background:
+    radial-gradient(600px circle at var(--mx) var(--my), rgba(168,130,61,0.16), transparent 60%),
+    var(--paper);
+  transition:background 0.05s linear;
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+}
+
+.aurora{position:absolute;inset:0;z-index:0;pointer-events:none;filter:blur(70px);opacity:0.55;}
+.aurora span{position:absolute;border-radius:50%;}
+.aurora span:nth-child(1){width:420px;height:420px;background:var(--brass);top:-10%;left:-8%;opacity:0.35;animation:auroraMove1 22s ease-in-out infinite;}
+.aurora span:nth-child(2){width:380px;height:380px;background:var(--pine);bottom:-14%;right:-6%;opacity:0.3;animation:auroraMove2 26s ease-in-out infinite;}
+.aurora span:nth-child(3){width:300px;height:300px;background:var(--ink);top:30%;right:20%;opacity:0.16;animation:auroraMove3 19s ease-in-out infinite;}
+@keyframes auroraMove1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(60px,40px) scale(1.15);}}
+@keyframes auroraMove2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-50px,-30px) scale(1.1);}}
+@keyframes auroraMove3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,50px) scale(0.9);}}
+
+#particles{position:absolute;inset:0;z-index:0;pointer-events:none;}
+
+.hero-topo{position:absolute;inset:0;width:100%;height:100%;opacity:0.5;pointer-events:none;will-change:transform;z-index:1;}
+.hero-topo path{animation:drift 14s ease-in-out infinite;}
+.hero-topo path:nth-child(2){animation-duration:18s;animation-delay:-3s;}
+.hero-topo path:nth-child(3){animation-duration:16s;animation-delay:-7s;}
+.hero-topo path:nth-child(4){animation-duration:20s;animation-delay:-1s;}
+@keyframes drift{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+.hero-inner{position:relative;z-index:2;text-align:center;width:100%;}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--brass-deep);margin-bottom:18px;
+  opacity:0;animation:riseIn 0.7s ease forwards;
+}
+h1{
+  font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:600;
+  font-size:clamp(2.2rem,5.4vw,3.6rem);line-height:1.14;letter-spacing:-0.01em;
+  max-width:18ch;margin:0 auto 20px;
+}
+.word-mask{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:0.08em;}
+.word-inner{display:inline-block;transform:translateY(120%);animation:wordUp 0.75s cubic-bezier(.2,.8,.2,1) forwards;}
+@keyframes wordUp{to{transform:translateY(0);}}
+
+.hero-sub{
+  font-size:1.08rem;max-width:52ch;color:#39485a;margin:0 auto 48px;
+  opacity:0;animation:riseIn 0.7s ease 0.35s forwards;
+}
+@keyframes riseIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* path cards */
+.path-grid{display:grid;grid-template-columns:1fr;gap:22px;position:relative;z-index:2;}
+@media(min-width:760px){.path-grid{grid-template-columns:repeat(3,1fr);}}
+
+.path-card{
+  --tiltx:0deg; --tilty:0deg;
+  position:relative;
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  background:rgba(245,247,250,0.6);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:32px 26px 28px;
+  text-align:left;
+  overflow:visible;
+  transform:perspective(800px) rotateX(var(--tilty)) rotateY(var(--tiltx)) translateY(0) scale(1);
+  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+  box-shadow:0 1px 0 var(--line);
+  opacity:0;
+  animation:riseIn 0.7s ease forwards;
+}
+.path-card:nth-child(1){animation-delay:0.5s;}
+.path-card:nth-child(2){animation-delay:0.58s;}
+.path-card:nth-child(3){animation-delay:0.66s;}
+
+.path-grid.spotlight .path-card:not(:hover):not(:focus-visible){
+  opacity:0.5;
+  filter:saturate(0.7);
+  transform:perspective(800px) rotateX(0) rotateY(0) scale(0.97);
+}
+
+.path-card .sheen{
+  content:"";
+  position:absolute;inset:0;border-radius:8px;
+  background:linear-gradient(135deg, rgba(168,130,61,0.18), transparent 55%);
+  opacity:0;
+  transition:opacity 0.25s ease;
+  pointer-events:none;
+}
+.path-card:hover .sheen, .path-card:focus-visible .sheen{opacity:1;}
+
+.path-card .ring{
+  content:"";
+  position:absolute;inset:-3px;border-radius:11px;
+  padding:2px;
+  background:conic-gradient(from var(--angle,0deg), var(--brass), var(--pine), var(--ink), var(--brass-deep), var(--brass));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:0;
+  transition:opacity 0.3s ease;
+  animation:spin 3.5s linear infinite;
+  pointer-events:none;
+  z-index:-1;
+}
+@keyframes spin{to{--angle:360deg;}}
+.path-card:hover .ring, .path-card:focus-visible .ring{opacity:1;}
+
+.path-card:hover .path-icon, .path-card:focus-visible .path-icon{transform:translateY(-3px) scale(1.05);}
+.path-card:hover .path-arrow, .path-card:focus-visible .path-arrow{transform:translateX(4px);}
+
+.path-icon{
+  width:52px;height:52px;border-radius:50%;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  transition:transform 0.25s ease;position:relative;z-index:1;
+}
+.path-icon svg{width:26px;height:26px;stroke:var(--white);fill:none;stroke-width:1.8;}
+.path-icon svg path, .path-icon svg circle{stroke-dasharray:70;stroke-dashoffset:70;animation:draw 1.1s ease forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+.path-card:nth-child(1) .path-icon svg path, .path-card:nth-child(1) .path-icon svg circle{animation-delay:0.8s;}
+.path-card:nth-child(2) .path-icon svg path, .path-card:nth-child(2) .path-icon svg circle{animation-delay:0.88s;}
+.path-card:nth-child(3) .path-icon svg path, .path-card:nth-child(3) .path-icon svg circle{animation-delay:0.96s;}
+
+.path-card.accent-brass .path-icon{background:var(--brass-deep);}
+.path-card.accent-pine .path-icon{background:var(--pine);}
+
+.path-kicker{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:10px;position:relative;z-index:1;}
+.path-title{font-family:'Fraunces',serif;font-weight:500;font-size:1.35rem;margin-bottom:10px;position:relative;z-index:1;}
+.path-body{font-size:0.92rem;color:#5a6472;margin-bottom:22px;max-width:32ch;position:relative;z-index:1;}
+.path-cta{display:flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.9rem;color:var(--ink);position:relative;z-index:1;}
+.path-arrow{transition:transform 0.2s ease;display:flex;}
+.path-arrow svg{width:16px;height:16px;}
+
+/* scroll cue */
+.scroll-cue{
+  display:flex;justify-content:center;margin-top:44px;position:relative;z-index:2;
+  opacity:0;animation:riseIn 0.7s ease 1.1s forwards, bob 2s ease-in-out 1.9s infinite;
+}
+.scroll-cue svg{width:20px;height:20px;stroke:var(--brass-deep);}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+.scroll-cue.hidden{opacity:0 !important;animation:none;}
+
+/* ticker (two rows, opposite directions) */
+.ticker-stack{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.ticker{overflow:hidden;padding:11px 0;position:relative;background:var(--ink);}
+.ticker.reverse{background:var(--pine);}
+.ticker-track{display:flex;width:max-content;animation:tickerScroll 26s linear infinite;}
+.ticker.reverse .ticker-track{animation-name:tickerScrollReverse;animation-duration:32s;}
+.ticker-item{display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#cdd5df;white-space:nowrap;padding:0 22px;}
+.ticker-item .dot{color:var(--brass);margin-right:22px;}
+@keyframes tickerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes tickerScrollReverse{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+.ticker:hover .ticker-track{animation-play-state:paused;}
+
+/* reveal-on-scroll sections */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease, transform 0.7s ease;}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+
+/* trust bar */
+.trust-bar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 24px;}
+@media(min-width:640px){.trust-grid{grid-template-columns:repeat(4,1fr);}}
+.trust-item{transition:transform 0.2s ease;}
+.trust-item:hover{transform:translateY(-2px);}
+.trust-num{font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem;color:var(--brass-deep);margin-bottom:2px;transition:text-shadow 0.2s ease;}
+.trust-item:hover .trust-num{text-shadow:0 0 18px rgba(168,130,61,0.45);}
+.trust-label{font-size:0.8rem;color:#5a6472;}
+
+/* team */
+.team{background:var(--ink);color:var(--white);padding:56px 0;}
+.section-head{font-family:'Fraunces',serif;font-weight:500;font-size:1.7rem;margin-bottom:32px;max-width:26ch;color:var(--white);}
+
+.team-grid{display:grid;grid-template-columns:1fr;gap:44px;}
+@media(min-width:860px){.team-grid{grid-template-columns:1fr 1fr;align-items:start;}}
+
+.team-photo-wrap{max-width:340px;border-radius:4px;overflow:hidden;border:2px solid var(--brass);margin-bottom:22px;}
+.team-photo-wrap img{width:100%;height:auto;display:block;}
+.team-photo-fallback{display:none;width:100%;height:220px;align-items:center;justify-content:center;background:var(--pine);color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;}
+
+.team-body{max-width:58ch;color:#cdd5df;font-size:1rem;margin-bottom:20px;}
+.team-tags{display:flex;gap:10px;flex-wrap:wrap;}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #45566b;color:#a9b6c6;padding:6px 12px;border-radius:1px;transition:border-color 0.2s ease, color 0.2s ease;}
+.tag:hover{border-color:var(--brass);color:var(--white);}
+
+/* license / pro cards on the right */
+.pro-cards{display:flex;flex-direction:column;gap:20px;}
+.pro-card{
+  background:rgba(255,255,255,0.045);
+  border:1px solid #3d4d63;
+  border-top:2px solid var(--brass);
+  border-radius:6px;
+  padding:26px 28px;
+}
+.pro-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.pro-card-name{font-family:'Fraunces',serif;font-weight:500;font-size:1.45rem;color:var(--white);margin-bottom:4px;}
+.pro-card-role{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--brass);}
+.pro-card-row{font-size:1rem;color:#cdd5df;margin-bottom:10px;line-height:1.55;}
+.pro-card-row strong{color:var(--white);font-weight:600;}
+.pro-logo-slot{
+  width:180px;height:80px;
+  background:var(--paper);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  padding:10px 12px;
+  flex:none;
+}
+.pro-logo-slot img{max-width:100%;max-height:100%;display:block;}
 .pro-logo-slot--sfr{width:230px;height:100px;padding:6px 8px;}
 
 /* footer */
