@@ -4,25 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Behind on Your Mortgage? Free Foreclosure Options Guide | Team Perez Aguilar</title>
-<!--
-  ============================================================
-  SETUP NOTES (delete before publishing to GitHub Pages)
-  ============================================================
-  1. This file mirrors the exact CSS/fonts/structure of
-     valuation-landing-bilingual.html and buyer-landing.html in
-     this same repo, so it will look and behave consistently
-     with the rest of the funnel once uploaded.
-  2. FORM SUBMISSION: this page has its own dedicated Formspree
-     endpoint (https://formspree.io/f/xnpajogl) so short-sale leads
-     land in their own inbox, separate from buyer-landing.html's
-     leads. The "source" field is also set to "short-sale-guide-request"
-     as a backup way to filter if you ever consolidate forms.
-  3. GUIDE FILE: point the confirmation flow / your email autoresponder
-     at wherever the actual "Behind on Your Mortgage?" PDF guide is
-     hosted (Google Drive, this repo, your CRM's file library).
-  4. TEAM PHOTO: reuses team-photo.jpg already in this repo.
-  ============================================================
--->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -35,6 +16,7 @@
   --pine:#3D4F3F;
   --line:#C9D3DC;
   --white:#FFFDF8;
+  --dark-red:#8B1E1E;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -45,21 +27,24 @@ body{
   font-family:'Inter',sans-serif;
   -webkit-font-smoothing:antialiased;
   line-height:1.5;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 32 32'%3E%3Cpath d='M5 17 16 6l11 11' fill='none' stroke='%238A6B2E' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 15v11h16V15' fill='rgba(168,130,61,0.32)' stroke='%238A6B2E' stroke-width='2.8' stroke-linejoin='round'/%3E%3C/svg%3E") 9 9, auto;
+}
+
+a, button{
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 32 32'%3E%3Cpath d='M5 17 16 6l11 11' fill='none' stroke='%238A6B2E' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 15v11h16V15' fill='rgba(168,130,61,0.42)' stroke='%238A6B2E' stroke-width='2.6' stroke-linejoin='round'/%3E%3C/svg%3E") 11 11, pointer;
 }
 
 .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
 
 header{padding:20px 0;border-bottom:1px solid var(--line);}
 header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
-.brandmark{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;letter-spacing:0.01em;}
+.brandmark{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;letter-spacing:0.01em;color:inherit;text-decoration:none;}
 .brandmark span{color:var(--brass-deep);}
 .header-right{display:flex;align-items:center;gap:18px;}
-.eyebrow-nav{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--pine);display:none;}
-@media(min-width:640px){.eyebrow-nav{display:block;}}
 
 .social-links{display:flex;gap:14px;align-items:center;}
 .social-link{color:#5a6472;display:flex;transition:color 0.15s ease;}
-.social-link svg{width:18px;height:18px;display:block;}
+.social-link svg{width:22px;height:22px;display:block;}
 .social-link:hover{color:var(--brass-deep);}
 
 .lang-toggle{display:flex;border:1px solid var(--ink);border-radius:2px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.05em;}
@@ -72,11 +57,12 @@ header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:500;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.06;letter-spacing:-0.01em;max-width:15ch;margin-bottom:22px;}
 .hero-sub{font-size:1.05rem;max-width:48ch;color:#39485a;margin-bottom:16px;}
 .hero-sub strong{color:var(--ink);font-weight:600;}
-.hero-context{font-size:0.88rem;max-width:52ch;color:#5a6472;margin-bottom:36px;}
-.hero-context strong{color:var(--brass-deep);}
+.hero-context{font-size:0.92rem;max-width:52ch;color:#3d4a5c;margin-bottom:36px;}
+.hero-context .stat-red{color:var(--dark-red);font-weight:700;}
 
 .instrument{background:var(--paper-raised);border:1px solid var(--line);border-radius:2px;padding:28px;box-shadow:0 1px 0 var(--line);}
-.instrument-label{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--pine);margin-bottom:18px;}
+.instrument-label{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--pine);margin-bottom:8px;}
+.instrument-note{font-size:0.85rem;color:#3d4a5c;margin-bottom:14px;font-style:italic;}
 
 .elig-list{display:grid;gap:10px;margin-bottom:8px;}
 .elig-item{
@@ -100,14 +86,14 @@ h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:500;font-si
 .btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);}
 .btn-secondary:hover{background:var(--ink);color:var(--white);}
 
-.instrument-fine{font-size:0.8rem;color:#6b7280;margin-top:12px;}
+.instrument-fine{font-size:0.84rem;color:#3d4a5c;margin-top:12px;}
 
 #result{margin-top:0;max-height:0;overflow:hidden;transition:max-height 0.5s ease, margin-top 0.5s ease;}
 #result.open{margin-top:24px;max-height:1000px;}
 .result-inner{border-top:1px solid var(--line);padding-top:22px;}
 .result-range-label{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:8px;}
 .result-headline{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.25rem,3vw,1.6rem);color:var(--ink);margin-bottom:14px;line-height:1.25;}
-.result-note{font-size:0.85rem;color:#5a6472;max-width:54ch;margin-bottom:20px;}
+.result-note{font-size:0.88rem;color:#3d4a5c;max-width:54ch;margin-bottom:20px;}
 
 .guide-gate{background:var(--ink);color:var(--white);padding:22px;border-radius:2px;margin-top:8px;}
 .guide-gate-label{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#a9b6c6;margin-bottom:10px;}
@@ -127,29 +113,56 @@ h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:500;font-si
 .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 24px;}
 @media(min-width:640px){.trust-grid{grid-template-columns:repeat(4,1fr);}}
 .trust-num{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;color:var(--brass-deep);margin-bottom:2px;}
-.trust-label{font-size:0.8rem;color:#5a6472;}
+.trust-label{font-size:0.84rem;color:#3d4a5c;}
 
 .team{background:var(--ink);color:var(--white);padding:56px 0;}
 .section-head{font-family:'Fraunces',serif;font-weight:500;font-size:1.7rem;margin-bottom:24px;max-width:22ch;color:var(--white);}
-.team-photo-wrap{max-width:340px;border-radius:4px;overflow:hidden;border:2px solid var(--brass);margin-bottom:24px;}
-.team-photo-wrap img{width:100%;height:auto;display:block;}
-.team-photo-fallback{display:none;width:100%;height:220px;align-items:center;justify-content:center;background:var(--pine);color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;}
-.team-body{max-width:58ch;color:#cdd5df;font-size:1rem;margin-bottom:20px;}
-.team-tags{display:flex;gap:10px;flex-wrap:wrap;}
+.team-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
 .tag{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #45566b;color:#a9b6c6;padding:6px 12px;border-radius:1px;}
 
+.pro-cards{display:flex;flex-direction:column;gap:20px;max-width:420px;}
+.pro-card{
+  background:rgba(255,255,255,0.045);
+  border:1px solid #3d4d63;
+  border-top:2px solid var(--brass);
+  border-radius:6px;
+  padding:26px 28px;
+}
+.pro-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.pro-card-name{font-family:'Fraunces',serif;font-weight:500;font-size:1.45rem;color:var(--white);margin-bottom:4px;}
+.pro-card-role{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--brass);}
+.pro-card-row{font-size:1rem;color:#cdd5df;margin-bottom:10px;line-height:1.55;}
+.pro-card-row strong{color:var(--white);font-weight:600;}
+.pro-logo-slot{
+  width:150px;height:64px;
+  background:var(--paper);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 10px;
+  flex:none;
+}
+.pro-logo-slot img{max-width:100%;max-height:100%;display:block;}
+.pro-logo-slot--sfr{padding:2px 4px;}
+
 footer{padding:32px 0 48px;}
-.footer-fine{font-size:0.76rem;color:#7A8494;line-height:1.6;max-width:74ch;}
+.footer-fine{font-size:0.84rem;color:#4a5568;line-height:1.6;max-width:74ch;}
 .footer-fine + .footer-fine{margin-top:10px;}
+
+.compliance-badges{display:flex;flex-wrap:wrap;gap:24px;margin:22px 0;align-items:center;}
+.compliance-badge{display:flex;gap:12px;align-items:center;max-width:340px;min-height:56px;}
+.compliance-badge svg{flex:none;width:34px;height:34px;}
+.compliance-badge-title{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;font-weight:600;}
+.compliance-badge-body{font-size:0.8rem;color:#4a5568;line-height:1.5;}
+.compliance-badge-logo-item{max-width:none;align-items:center;min-height:56px;}
+.compliance-logo-img{height:56px;width:auto;display:block;}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <div class="brandmark">Team Perez<span>&nbsp;Aguilar</span></div>
+    <a class="brandmark" href="index.html">Team Perez<span>&nbsp;Aguilar</span></a>
     <div class="header-right">
-      <div class="eyebrow-nav">San Fernando · Santa Clarita · Palmdale · Lancaster</div>
       <div class="social-links">
         <a href="https://www.instagram.com/teamperezaguilar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.facebook.com/TeamPerezAguilar" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
@@ -169,10 +182,11 @@ footer{padding:32px 0 48px;}
     <div class="eyebrow i18n" data-en="Free Foreclosure Options Guide" data-es="Guía Gratuita de Opciones ante Ejecución Hipotecaria"></div>
     <h1 class="i18n" data-en="Behind on your mortgage? You have more options than you think." data-es="¿Atrasado con su hipoteca? Tiene más opciones de las que cree."></h1>
     <p class="hero-sub i18n" data-en="A 5-minute eligibility check for a short sale. No credit check, no obligation, no judgment." data-es="Una revisión de elegibilidad de 5 minutos para una venta corta. Sin revisión de crédito, sin obligación, sin juicios."></p>
-    <p class="hero-context i18n" data-en="<strong>Foreclosure filings are up 21%</strong> and short sales are up 16% so far this year. Homeowners who act early keep more of their equity and protect their credit." data-es="<strong>Las ejecuciones hipotecarias han aumentado un 21%</strong> y las ventas cortas un 16% en lo que va del año. Los propietarios que actúan a tiempo conservan más de su plusvalía y protegen su crédito."></p>
+    <p class="hero-context i18n" data-en="<strong class=&quot;stat-red&quot;>Foreclosure filings are up 21%*</strong> and <strong class=&quot;stat-red&quot;>short sales are up 16%*</strong> so far this year. Homeowners who act early may be able to avoid foreclosure." data-es="<strong class=&quot;stat-red&quot;>Las ejecuciones hipotecarias han aumentado un 21%*</strong> y <strong class=&quot;stat-red&quot;>las ventas cortas un 16%*</strong> en lo que va del año. Los propietarios que actúan a tiempo pueden evitar la ejecución hipotecaria."></p>
 
     <div class="instrument">
       <div class="instrument-label i18n" data-en="Quick eligibility check" data-es="Revisión rápida de elegibilidad"></div>
+      <div class="instrument-note i18n" data-en="Select one or all that apply." data-es="Seleccione una o todas las que apliquen."></div>
 
       <div class="elig-list">
         <label class="elig-item">
@@ -211,17 +225,10 @@ footer{padding:32px 0 48px;}
             <div class="guide-gate-title i18n" data-en="Get the Full Foreclosure Options Guide + your results" data-es="Obtenga la Guía Completa de Opciones + sus resultados"></div>
 
             <form id="guide-form">
-              <input type="text" id="guide-name" placeholder="Full name" required>
-              <input type="email" id="guide-email" placeholder="Email" required>
-              <input type="tel" id="guide-phone" placeholder="Phone" required>
-              <select id="guide-area" required>
-                <option value="" disabled selected class="i18n" data-en="Where is your home located?" data-es="¿Dónde se ubica su casa?"></option>
-                <option value="San Fernando Valley" class="i18n" data-en="San Fernando Valley" data-es="San Fernando Valley"></option>
-                <option value="Santa Clarita Valley" class="i18n" data-en="Santa Clarita Valley" data-es="Santa Clarita Valley"></option>
-                <option value="Palmdale" class="i18n" data-en="Palmdale" data-es="Palmdale"></option>
-                <option value="Lancaster" class="i18n" data-en="Lancaster" data-es="Lancaster"></option>
-                <option value="Not sure yet" class="i18n" data-en="Not sure yet" data-es="Aún no estoy seguro"></option>
-              </select>
+              <input type="text" id="guide-name" class="i18n-placeholder" data-en="Full name" data-es="Nombre completo" required>
+              <input type="email" id="guide-email" class="i18n-placeholder" data-en="Email" data-es="Correo electrónico" required>
+              <input type="tel" id="guide-phone" class="i18n-placeholder" data-en="Phone" data-es="Teléfono" required>
+              <input type="text" id="guide-area" class="i18n-placeholder" data-en="Where is your home located?" data-es="¿Dónde se ubica su casa?" required>
               <label class="guide-consent">
                 <input type="checkbox" id="guide-sms-consent" required>
                 <span class="i18n" data-en="I agree to receive texts and emails from Team Perez Aguilar about my request. Message and data rates may apply. Reply STOP to opt out." data-es="Acepto recibir mensajes de texto y correos de Team Perez Aguilar sobre mi solicitud. Pueden aplicar tarifas de mensajes y datos. Responda ALTO para dejar de recibir mensajes."></span>
@@ -249,7 +256,7 @@ footer{padding:32px 0 48px;}
       </div>
       <div class="trust-item">
         <div class="trust-num">2</div>
-        <div class="trust-label i18n" data-en="Licensed agent & loan officer, one team" data-es="Agente con licencia y oficial de préstamos, un mismo equipo"></div>
+        <div class="trust-label i18n" data-en="Licensed broker & loan officer, one team" data-es="Agente de Bienes Raíces y Agente de Préstamos, un mismo equipo"></div>
       </div>
       <div class="trust-item">
         <div class="trust-num">4</div>
@@ -266,13 +273,22 @@ footer{padding:32px 0 48px;}
 <section class="team">
   <div class="wrap">
     <div class="section-head i18n" data-en="Who is behind this guide" data-es="Quién está detrás de esta guía"></div>
-    <div class="team-photo-wrap">
-      <img src="team-photo.jpg" alt="Silvia Aguilar and Fernando Perez, Team Perez Aguilar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="team-photo-fallback">Team Perez Aguilar</div>
+
+    <div class="pro-cards">
+      <div class="pro-card">
+        <div class="pro-card-top">
+          <div>
+            <div class="pro-card-name">Silvia Aguilar</div>
+            <div class="pro-card-role i18n" data-en="Broker Associate" data-es="Agente de Bienes Raíces"></div>
+          </div>
+          <div class="pro-logo-slot pro-logo-slot--sfr"><img src="sfr-logo.png" alt="San Fernando Realty"></div>
+        </div>
+        <div class="pro-card-row"><strong class="i18n" data-en="DRE License:" data-es="Licencia DRE:"></strong> #01745879</div>
+        <div class="pro-card-row"><strong class="i18n" data-en="Brokerage:" data-es="Correduría:"></strong> San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340</div>
+        <div class="pro-card-row"><strong class="i18n" data-en="Corporate License ID:" data-es="ID de Licencia Corporativa:"></strong> 01167079</div>
+      </div>
     </div>
-    <p class="team-body i18n"
-      data-en="Your options are reviewed by Team Perez Aguilar, with over 40 years of combined experience across San Fernando Valley, Santa Clarita Valley, Palmdale, and Lancaster. Agent Silvia Aguilar works closely with loan officer Fernando Perez, so financing and short sale questions get answered by someone she already works with directly, not a stranger."
-      data-es="Sus opciones son revisadas por Team Perez Aguilar, con más de 40 años de experiencia combinada en San Fernando Valley, Santa Clarita Valley, Palmdale y Lancaster. La agente Silvia Aguilar trabaja de cerca con el oficial de préstamos Fernando Pérez, para que sus preguntas de financiamiento y venta corta sean respondidas por alguien con quien ella ya trabaja directamente, no un desconocido."></p>
+
     <div class="team-tags">
       <span class="tag i18n" data-en="First-time buyers" data-es="Compradores primerizos"></span>
       <span class="tag i18n" data-en="Relocations" data-es="Reubicaciones"></span>
@@ -285,18 +301,54 @@ footer{padding:32px 0 48px;}
 <footer>
   <div class="wrap">
     <p class="footer-fine i18n"
-      data-en="Equal Housing Opportunity. This self-check and guide are for general informational purposes only and do not constitute legal, tax, or financial advice. This is not a lender's determination of eligibility. Short sale outcomes depend on your lender, loan terms, and individual circumstances. Consult a qualified attorney, tax professional, or HUD-approved housing counselor before making decisions about your mortgage."
-      data-es="Igualdad de Oportunidad de Vivienda. Esta autoevaluación y guía son solo para fines informativos generales y no constituyen asesoría legal, fiscal o financiera. Esto no es una determinación de elegibilidad por parte del prestamista. Los resultados de una venta corta dependen de su prestamista, los términos de su préstamo y sus circunstancias individuales. Consulte a un abogado calificado, un profesional de impuestos, o un consejero de vivienda aprobado por HUD antes de tomar decisiones sobre su hipoteca."></p>
-    <p class="footer-fine i18n"
-      data-en="Team Perez Aguilar | Silvia Aguilar, DRE License #01745879 | Loan services provided by Fernando Perez, NMLS #1011109 | San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340 | Licensed in the State of California."
-      data-es="Team Perez Aguilar | Silvia Aguilar, Licencia DRE #01745879 | Servicios de préstamo proporcionados por Fernando Pérez, NMLS #1011109 | San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340 | Con licencia en el Estado de California."></p>
+      data-en="This self-check and guide are for general informational purposes only and do not constitute legal, tax, or financial advice. This is not a lender's determination of eligibility. Short sale outcomes depend on your lender, loan terms, and individual circumstances. Consult a qualified attorney, tax professional, or HUD-approved housing counselor before making decisions about your mortgage."
+      data-es="Esta autoevaluación y guía son solo para fines informativos generales y no constituyen asesoría legal, fiscal o financiera. Esto no es una determinación de elegibilidad por parte del prestamista. Los resultados de una venta corta dependen de su prestamista, los términos de su préstamo y sus circunstancias individuales. Consulte a un abogado calificado, un profesional de impuestos, o un consejero de vivienda aprobado por HUD antes de tomar decisiones sobre su hipoteca."></p>
+
+    <div class="compliance-badges">
+      <div class="compliance-badge">
+        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" rx="3" stroke="#1C2B3A" stroke-width="1.4"/>
+          <path d="M8 21 20 10l12 11" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 19v11h18V19" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="15" y1="24.5" x2="25" y2="24.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="15" y1="27.5" x2="25" y2="27.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="compliance-badge-title i18n" data-en="Equal Housing Opportunity" data-es="Igualdad de Oportunidad de Vivienda"></div>
+          <div class="compliance-badge-body i18n" data-en="In accordance with the Federal Fair Housing Act, San Fernando Realty does not discriminate on the basis of race, color, religion, sex, handicap, familial status, or national origin in the sale, rental, or financing of housing." data-es="De conformidad con la Ley Federal de Vivienda Justa, San Fernando Realty no discrimina por motivos de raza, color, religión, sexo, discapacidad, estado familiar u origen nacional en la venta, alquiler o financiamiento de vivienda."></div>
+        </div>
+      </div>
+
+      <div class="compliance-badge">
+        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" rx="3" stroke="#1C2B3A" stroke-width="1.4"/>
+          <path d="M8 21 20 10l12 11" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 19v11h18V19" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="15" y1="24.5" x2="25" y2="24.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="15" y1="27.5" x2="25" y2="27.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="compliance-badge-title i18n" data-en="Equal Opportunity Lender" data-es="Prestamista de Igualdad de Oportunidades"></div>
+          <div class="compliance-badge-body i18n" data-en="Alterra Home Loans, NMLS #133739, is an Equal Opportunity Lender. This is not a commitment to lend; all loans are subject to underwriting and credit approval." data-es="Alterra Home Loans, NMLS #133739, es un Prestamista de Igualdad de Oportunidades. Esto no es un compromiso de préstamo; todos los préstamos están sujetos a evaluación y aprobación crediticia."></div>
+        </div>
+      </div>
+
+      <div class="compliance-badge compliance-badge-logo-item">
+        <img src="realtor-mls-logo.png" alt="REALTOR, Multiple Listing Service" class="compliance-logo-img">
+      </div>
+    </div>
+
     <p class="footer-fine"><a href="privacy-policy.html" id="privacy-link" class="i18n" data-en="Privacy Policy" data-es="Política de Privacidad" style="color:inherit;"></a></p>
+
+    <p class="footer-fine i18n" style="margin-top:16px;font-style:italic;"
+      data-en="*Foreclosure and short sale statistics: HousingWire, &quot;Foreclosures climb 21% in first half of 2026 as timelines shorten&quot;; PR Newswire, &quot;Short Sales Are Making a Comeback,&quot; 2026. Figures reflect national and regional trends and may not reflect conditions in your specific market."
+      data-es="*Estadísticas de ejecuciones hipotecarias y ventas cortas: HousingWire, &quot;Las ejecuciones hipotecarias aumentan 21% en la primera mitad de 2026 a medida que se acortan los plazos&quot;; PR Newswire, &quot;Las ventas cortas están regresando,&quot; 2026. Las cifras reflejan tendencias nacionales y regionales, y pueden no reflejar las condiciones de su mercado específico."></p>
   </div>
 </footer>
 
 <script>
 let currentLang = 'en';
-let lastEligTier = null; // null = no result yet, 0/1/2 once computed
+let lastEligTier = null; // null = no result yet, 1/2/3 once computed (3 = closest to short sale)
 
 function renderHeroContext(){
   document.querySelectorAll('.hero-context').forEach(function(el){
@@ -307,14 +359,14 @@ function renderHeroContext(){
 function eligMessages(tier){
   const messages = {
     en: {
-      2: "Based on your answers, a short sale is likely available to you. Let's confirm the details.",
-      1: "You may qualify for a short sale, or another option that protects your credit even better. Worth a quick conversation.",
-      0: "A short sale may not be the first option for you, but there are usually other ways to protect your credit and your equity. Let's talk through what fits."
+      1: "A loan modification or a short sale may be available to you. Let's talk, I'd love to help.",
+      2: "You may qualify for a short sale or another option that allows you to keep your home.",
+      3: "Based on your answers, a short sale or a loan modification is likely available to you. Let's talk, I'd love to help."
     },
     es: {
-      2: "Según sus respuestas, es probable que una venta corta esté disponible para usted. Confirmemos los detalles.",
-      1: "Es posible que califique para una venta corta, u otra opción que proteja aún mejor su crédito. Vale la pena una breve conversación.",
-      0: "Es posible que una venta corta no sea la primera opción para usted, pero generalmente hay otras formas de proteger su crédito y su plusvalía. Hablemos sobre lo que más le conviene."
+      1: "Una modificación de préstamo o una venta corta pueden estar disponibles para usted. Hablemos, me encantaría ayudarle.",
+      2: "Es posible que califique para una venta corta u otra opción que le permita conservar su casa.",
+      3: "Según sus respuestas, es probable que una venta corta o una modificación de préstamo estén disponibles para usted. Hablemos, me encantaría ayudarle."
     }
   };
   return messages[currentLang][tier];
@@ -331,6 +383,9 @@ function applyLang(lang){
   document.querySelectorAll('.i18n').forEach(function(el){
     if(el.classList.contains('hero-context')) return; // handled separately (contains markup)
     el.textContent = el.dataset[lang];
+  });
+  document.querySelectorAll('.i18n-placeholder').forEach(function(el){
+    el.placeholder = el.dataset[lang];
   });
   renderHeroContext();
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -362,9 +417,9 @@ document.getElementById('elig-btn').addEventListener('click', function(){
   checks.forEach(function(c){ if(c.checked) checkedCount++; });
 
   let tier;
-  if(checkedCount >= 4){ tier = 2; }
-  else if(checkedCount >= 2){ tier = 1; }
-  else { tier = 0; }
+  if(checkedCount >= 4){ tier = 3; }
+  else if(checkedCount >= 2){ tier = 2; }
+  else { tier = 1; }
 
   lastEligTier = tier;
   renderEligResult();
@@ -387,7 +442,7 @@ document.getElementById('guide-form').addEventListener('submit', async function(
     name: document.getElementById('guide-name').value.trim(),
     email: document.getElementById('guide-email').value.trim(),
     phone: document.getElementById('guide-phone').value.trim(),
-    area_of_interest: document.getElementById('guide-area').value,
+    home_location: document.getElementById('guide-area').value.trim(),
     eligibility_answers_checked: checkedCount,
     eligibility_tier: lastEligTier,
     language: currentLang,
