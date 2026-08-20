@@ -10,7 +10,10 @@
 :root{
   --ink:#1C2B3A;
   --paper:#E8EDF2;
+  --paper-raised:#F5F7FA;
+  --brass:#A8823D;
   --brass-deep:#8A6B2E;
+  --pine:#3D4F3F;
   --line:#C9D3DC;
   --white:#FFFDF8;
 }
@@ -23,13 +26,18 @@ body{
   font-family:'Inter',sans-serif;
   -webkit-font-smoothing:antialiased;
   line-height:1.6;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 32 32'%3E%3Cpath d='M5 17 16 6l11 11' fill='none' stroke='%238A6B2E' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 15v11h16V15' fill='rgba(168,130,61,0.32)' stroke='%238A6B2E' stroke-width='2.8' stroke-linejoin='round'/%3E%3C/svg%3E") 9 9, auto;
+}
+
+a, button{
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 32 32'%3E%3Cpath d='M5 17 16 6l11 11' fill='none' stroke='%238A6B2E' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 15v11h16V15' fill='rgba(168,130,61,0.42)' stroke='%238A6B2E' stroke-width='2.6' stroke-linejoin='round'/%3E%3C/svg%3E") 11 11, pointer;
 }
 
 .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
 
 header{padding:20px 0;border-bottom:1px solid var(--line);}
 header .wrap{display:flex;justify-content:space-between;align-items:center;}
-.brandmark{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;}
+.brandmark{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;color:inherit;text-decoration:none;}
 .brandmark span{color:var(--brass-deep);}
 
 .lang-toggle{display:flex;border:1px solid var(--ink);border-radius:2px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.05em;}
@@ -71,28 +79,44 @@ p, li{
 ul{margin-left:20px;margin-bottom:14px;}
 
 .contact-block{
-  background:#F5F7FA;
+  background:var(--paper-raised);
   border:1px solid var(--line);
+  border-top:3px solid var(--brass);
   padding:20px;
   margin-top:32px;
   font-size:0.9rem;
 }
-.contact-block strong{display:block;margin-bottom:6px;}
+.contact-block h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;margin-bottom:12px;}
+.contact-person{margin-bottom:14px;}
+.contact-person:last-child{margin-bottom:0;}
+.contact-person strong{display:block;margin-bottom:2px;color:var(--ink);}
+.contact-person span{display:block;font-size:0.85rem;color:#5a6472;line-height:1.5;}
+
 .social-links{display:flex;gap:14px;align-items:center;}
 .social-link{
   color:#5a6472;
   display:flex;
   transition:color 0.15s ease;
 }
-.social-link svg{width:18px;height:18px;display:block;}
+.social-link svg{width:22px;height:22px;display:block;}
 .social-link:hover{color:var(--brass-deep);}
+
+.compliance-badges{display:flex;flex-wrap:wrap;gap:24px;margin:22px 0 8px;align-items:center;}
+.compliance-badge{display:flex;gap:12px;align-items:center;max-width:340px;min-height:56px;}
+.compliance-badge svg{flex:none;width:34px;height:34px;}
+.compliance-badge-title{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;font-weight:600;}
+.compliance-badge-body{font-size:0.76rem;color:#7A8494;line-height:1.5;}
+.compliance-badge-logo-item{max-width:none;align-items:center;min-height:56px;}
+.compliance-logo-img{height:56px;width:auto;display:block;}
+
+.footer-fine{font-size:0.76rem;color:#7A8494;line-height:1.6;max-width:74ch;margin-top:8px;}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <div class="brandmark">Team Perez<span>&nbsp;Aguilar</span></div>
+    <a class="brandmark" href="index.html">Team Perez<span>&nbsp;Aguilar</span></a>
     <div class="header-right">
       <div class="social-links">
         <a href="https://www.instagram.com/teamperezaguilar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg></a>
@@ -110,50 +134,63 @@ ul{margin-left:20px;margin-bottom:14px;}
 
 <main class="wrap">
   <h1 class="i18n" data-en="Privacy Policy" data-es="Política de Privacidad"></h1>
-  <p class="updated i18n" data-en="Last updated: [DATE]" data-es="Última actualización: [FECHA]"></p>
+  <p class="updated i18n" data-en="Last updated: August 20, 2026" data-es="Última actualización: 20 de agosto de 2026"></p>
 
   <p class="i18n"
-    data-en="Team Perez Aguilar, operating under San Fernando Realty (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), respects your privacy. This policy explains what information we collect through our website tools, how we use it, and the choices available to you, particularly if you are a California resident."
-    data-es="Team Perez Aguilar, operando bajo San Fernando Realty (&quot;nosotros&quot; o &quot;nuestro&quot;), respeta su privacidad. Esta política explica qué información recopilamos a través de las herramientas de nuestro sitio web, cómo la usamos, y las opciones disponibles para usted, particularmente si es residente de California."></p>
+    data-en="Team Perez Aguilar, a team consisting of Silvia Aguilar (San Fernando Realty) and Fernando Perez (Alterra Home Loans) (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), respects your privacy. This policy explains what information we collect across our website — including our home valuation tool, buyer affordability calculator, and short sale eligibility questionnaire — how we use it, who we share it with, and the choices available to you, particularly if you are a California resident."
+    data-es="Team Perez Aguilar, un equipo formado por Silvia Aguilar (San Fernando Realty) y Fernando Perez (Alterra Home Loans) (&quot;nosotros&quot; o &quot;nuestro&quot;), respeta su privacidad. Esta política explica qué información recopilamos en todo nuestro sitio web — incluyendo nuestra herramienta de valoración de casas, la calculadora de poder adquisitivo para compradores, y el cuestionario de elegibilidad para venta corta — cómo la usamos, con quién la compartimos, y las opciones disponibles para usted, particularmente si es residente de California."></p>
 
   <h2 class="i18n" data-en="Information We Collect" data-es="Información que Recopilamos"></h2>
   <p class="i18n"
-    data-en="When you use our home valuation tool or request a consultation, we collect the information you provide directly, which may include:"
-    data-es="Cuando usa nuestra herramienta de valoración de casas o solicita una consulta, recopilamos la información que usted proporciona directamente, la cual puede incluir:"></p>
+    data-en="Depending on which tool or form you use, we may collect the information you provide directly, which may include:"
+    data-es="Dependiendo de qué herramienta o formulario use, podemos recopilar la información que usted proporciona directamente, la cual puede incluir:"></p>
   <ul>
-    <li class="i18n" data-en="Your name" data-es="Su nombre"></li>
-    <li class="i18n" data-en="Property address" data-es="Dirección de la propiedad"></li>
-    <li class="i18n" data-en="Phone number" data-es="Número de teléfono"></li>
-    <li class="i18n" data-en="Email address" data-es="Correo electrónico"></li>
-    <li class="i18n" data-en="Preferred contact date and time" data-es="Fecha y hora preferida de contacto"></li>
-    <li class="i18n" data-en="Any additional message you choose to share" data-es="Cualquier mensaje adicional que decida compartir"></li>
+    <li class="i18n" data-en="Your name, phone number, and email address" data-es="Su nombre, número de teléfono y correo electrónico"></li>
+    <li class="i18n" data-en="Property address, for home valuation or short sale requests" data-es="Dirección de la propiedad, para solicitudes de valoración o venta corta"></li>
+    <li class="i18n" data-en="Household income, estimated down payment, monthly debts, and an illustrative interest rate, if you use the buyer affordability calculator" data-es="Ingreso del hogar, enganche estimado, deudas mensuales, y una tasa de interés ilustrativa, si usa la calculadora de poder adquisitivo para compradores"></li>
+    <li class="i18n" data-en="Responses to our short sale eligibility questionnaire, which may reflect your general homeownership or financial situation" data-es="Respuestas a nuestro cuestionario de elegibilidad para venta corta, las cuales pueden reflejar su situación general de propiedad de vivienda o financiera"></li>
+    <li class="i18n" data-en="The type of help you're requesting (for example, a buyer's guide, a list of homes, or a pre-qualification consultation) and your area of interest" data-es="El tipo de ayuda que solicita (por ejemplo, una guía del comprador, una lista de casas, o una consulta de precalificación) y su área de interés"></li>
+    <li class="i18n" data-en="Preferred contact date and time, and any additional message you choose to share" data-es="Fecha y hora preferida de contacto, y cualquier mensaje adicional que decida compartir"></li>
+    <li class="i18n" data-en="Your consent to receive texts and emails about your request" data-es="Su consentimiento para recibir mensajes de texto y correos electrónicos sobre su solicitud"></li>
   </ul>
 
   <h2 class="i18n" data-en="How We Use Your Information" data-es="Cómo Usamos Su Información"></h2>
   <p class="i18n" data-en="We use the information you provide to:" data-es="Usamos la información que usted proporciona para:"></p>
   <ul>
-    <li class="i18n" data-en="Generate a preliminary home value estimate" data-es="Generar una estimación preliminar del valor de su casa"></li>
-    <li class="i18n" data-en="Respond to your consultation request" data-es="Responder a su solicitud de consulta"></li>
+    <li class="i18n" data-en="Generate a preliminary home value estimate or buying power estimate" data-es="Generar una estimación preliminar del valor de su casa o de su poder de compra"></li>
+    <li class="i18n" data-en="Evaluate and respond to your short sale eligibility submission or consultation request" data-es="Evaluar y responder a su envío de elegibilidad para venta corta o solicitud de consulta"></li>
     <li class="i18n" data-en="Contact you by phone, text, or email about your inquiry" data-es="Contactarlo por teléfono, mensaje de texto o correo electrónico sobre su solicitud"></li>
+    <li class="i18n" data-en="Track and follow up on your request internally, using the tools described below" data-es="Dar seguimiento a su solicitud de forma interna, usando las herramientas descritas a continuación"></li>
     <li class="i18n" data-en="Send you relevant market information, if you have not opted out" data-es="Enviarle información relevante del mercado, si no ha optado por no recibirla"></li>
   </ul>
   <p class="i18n" data-en="We do not sell your personal information to third parties." data-es="No vendemos su información personal a terceros."></p>
 
   <h2 class="i18n" data-en="Third-Party Services We Use" data-es="Servicios de Terceros que Usamos"></h2>
   <p class="i18n"
-    data-en="To operate this website, we rely on the following third-party services, each of which processes limited data on our behalf:"
-    data-es="Para operar este sitio web, dependemos de los siguientes servicios de terceros, cada uno de los cuales procesa datos limitados en nuestro nombre:"></p>
+    data-en="To operate this website and follow up with you, we rely on the following third-party services, each of which processes limited data on our behalf:"
+    data-es="Para operar este sitio web y darle seguimiento, dependemos de los siguientes servicios de terceros, cada uno de los cuales procesa datos limitados en nuestro nombre:"></p>
   <ul>
     <li class="i18n"
       data-en="<strong>RentCast</strong> — processes the property address you submit to generate an automated home value estimate."
       data-es="<strong>RentCast</strong> — procesa la dirección de la propiedad que usted envía para generar una estimación automatizada del valor de la casa."></li>
     <li class="i18n"
-      data-en="<strong>Formspree</strong> — processes consultation request form submissions and delivers them to our team by email."
-      data-es="<strong>Formspree</strong> — procesa los envíos del formulario de solicitud de consulta y los entrega a nuestro equipo por correo electrónico."></li>
+      data-en="<strong>Formspree</strong> — processes form submissions from this site (consultation requests, buyer guide requests, and short sale eligibility submissions) and delivers them to our team."
+      data-es="<strong>Formspree</strong> — procesa los envíos de formularios de este sitio (solicitudes de consulta, solicitudes de guía del comprador, y envíos de elegibilidad para venta corta) y los entrega a nuestro equipo."></li>
+    <li class="i18n"
+      data-en="<strong>Zapier</strong> — an automation service that receives your form submission from Formspree and passes it along to our customer relationship management system."
+      data-es="<strong>Zapier</strong> — un servicio de automatización que recibe el envío de su formulario desde Formspree y lo transmite a nuestro sistema de gestión de relaciones con clientes."></li>
+    <li class="i18n"
+      data-en="<strong>EspoCRM</strong> — our internal customer relationship management system, where your submitted information is stored so Silvia and Fernando can track and follow up on your request."
+      data-es="<strong>EspoCRM</strong> — nuestro sistema interno de gestión de relaciones con clientes, donde se almacena la información que envió para que Silvia y Fernando puedan dar seguimiento a su solicitud."></li>
   </ul>
   <p class="i18n"
     data-en="These providers may retain data according to their own privacy policies, which are separate from ours."
     data-es="Estos proveedores pueden retener datos de acuerdo con sus propias políticas de privacidad, las cuales son independientes de la nuestra."></p>
+
+  <h2 class="i18n" data-en="Leaving Our Site: Alterra Home Loans" data-es="Al Salir de Nuestro Sitio: Alterra Home Loans"></h2>
+  <p class="i18n"
+    data-en="If you click &quot;Start My Loan Application,&quot; you will leave this website and be taken to Alterra Home Loans' secure loan application portal (myloan.goalterra.com), operated by Alterra Home Loans, NMLS #133739. Any information you enter there is collected directly by Alterra Home Loans and governed by their own privacy policy, not this one."
+    data-es="Si hace clic en &quot;Comenzar Mi Solicitud de Préstamo,&quot; saldrá de este sitio web y será dirigido al portal seguro de solicitud de préstamo de Alterra Home Loans (myloan.goalterra.com), operado por Alterra Home Loans, NMLS #133739. Cualquier información que ingrese allí es recopilada directamente por Alterra Home Loans y se rige por su propia política de privacidad, no por esta."></p>
 
   <h2 class="i18n" data-en="Your California Privacy Rights (CCPA)" data-es="Sus Derechos de Privacidad en California (CCPA)"></h2>
   <p class="i18n" data-en="If you are a California resident, you have the right to:" data-es="Si usted es residente de California, tiene derecho a:"></p>
@@ -167,13 +204,23 @@ ul{margin-left:20px;margin-bottom:14px;}
 
   <h2 class="i18n" data-en="SMS and Email Communications" data-es="Comunicaciones por SMS y Correo Electrónico"></h2>
   <p class="i18n"
-    data-en="By submitting a form on this site, you may be contacted by phone, text message, or email regarding your request. Message and data rates may apply to text messages. You can opt out of text messages at any time by replying STOP, and out of email by using the unsubscribe link in any message."
-    data-es="Al enviar un formulario en este sitio, es posible que lo contactemos por teléfono, mensaje de texto o correo electrónico sobre su solicitud. Pueden aplicar tarifas de mensajes y datos a los mensajes de texto. Puede optar por no recibir mensajes de texto en cualquier momento respondiendo ALTO, y por no recibir correos electrónicos usando el enlace para darse de baja en cualquier mensaje."></p>
+    data-en="By submitting a form on this site, you may be contacted by phone, text message, or email regarding your request. Every form on this site requires your explicit consent to be contacted before it can be submitted. Message and data rates may apply to text messages. You can opt out of text messages at any time by replying STOP, and out of email by using the unsubscribe link in any message."
+    data-es="Al enviar un formulario en este sitio, es posible que lo contactemos por teléfono, mensaje de texto o correo electrónico sobre su solicitud. Todos los formularios de este sitio requieren su consentimiento explícito para ser contactado antes de poder enviarse. Pueden aplicar tarifas de mensajes y datos a los mensajes de texto. Puede optar por no recibir mensajes de texto en cualquier momento respondiendo ALTO, y por no recibir correos electrónicos usando el enlace para darse de baja en cualquier mensaje."></p>
+
+  <h2 class="i18n" data-en="Sources We Reference" data-es="Fuentes que Referenciamos"></h2>
+  <p class="i18n"
+    data-en="Statistics referenced on our short sale page come from the following published sources: HousingWire, &quot;Foreclosures climb 21% in first half of 2026 as timelines shorten&quot;; and PR Newswire, &quot;Short Sales Are Making a Comeback,&quot; 2026. These figures reflect national and regional trends reported by third parties and may not reflect conditions in your specific market. Our home valuation, buyer affordability, and short sale eligibility tools use general industry lending guidelines and publicly available market data; they are not appraisals, pre-approvals, or a lender's or agent's determination of eligibility."
+    data-es="Las estadísticas mencionadas en nuestra página de venta corta provienen de las siguientes fuentes publicadas: HousingWire, &quot;Las ejecuciones hipotecarias aumentan 21% en la primera mitad de 2026 a medida que se acortan los plazos&quot;; y PR Newswire, &quot;Las ventas cortas están regresando,&quot; 2026. Estas cifras reflejan tendencias nacionales y regionales reportadas por terceros y pueden no reflejar las condiciones de su mercado específico. Nuestras herramientas de valoración de casas, poder adquisitivo para compradores, y elegibilidad para venta corta usan pautas generales de la industria de préstamos y datos de mercado disponibles públicamente; no son tasaciones, preaprobaciones, ni una determinación de elegibilidad por parte de un prestamista o agente."></p>
 
   <h2 class="i18n" data-en="Data Security" data-es="Seguridad de los Datos"></h2>
   <p class="i18n"
     data-en="We take reasonable measures to protect the information you share with us. However, no method of electronic transmission or storage is 100% secure."
     data-es="Tomamos medidas razonables para proteger la información que comparte con nosotros. Sin embargo, ningún método de transmisión o almacenamiento electrónico es 100% seguro."></p>
+
+  <h2 class="i18n" data-en="Children's Privacy" data-es="Privacidad de Menores"></h2>
+  <p class="i18n"
+    data-en="This site is intended for adults seeking real estate or home financing services and is not directed to children under 18. We do not knowingly collect personal information from children."
+    data-es="Este sitio está dirigido a adultos que buscan servicios inmobiliarios o de financiamiento de vivienda y no está dirigido a menores de 18 años. No recopilamos conscientemente información personal de menores."></p>
 
   <h2 class="i18n" data-en="Changes to This Policy" data-es="Cambios a Esta Política"></h2>
   <p class="i18n"
@@ -181,11 +228,58 @@ ul{margin-left:20px;margin-bottom:14px;}
     data-es="Podemos actualizar esta política de vez en cuando. La fecha de &quot;Última actualización&quot; en la parte superior de esta página refleja la revisión más reciente."></p>
 
   <div class="contact-block">
-    <strong class="i18n" data-en="Contact us about your privacy:" data-es="Contáctenos sobre su privacidad:"></strong>
-    Team Perez Aguilar | San Fernando Realty<br>
-    458 N Maclay Ave, San Fernando, CA 91340<br>
-    Silvia Aguilar, DRE License #01745879
+    <h3 class="i18n" data-en="Contact us about your privacy:" data-es="Contáctenos sobre su privacidad:"></h3>
+    <div class="contact-person">
+      <strong>Silvia Aguilar</strong>
+      <span class="i18n" data-en="Real Estate Agent, DRE License #01745879" data-es="Agente de Bienes Raíces, Licencia DRE #01745879"></span>
+      <span>San Fernando Realty, 458 N Maclay Ave, San Fernando, CA 91340</span>
+      <span class="i18n" data-en="Corporate License ID: 01167079" data-es="ID de Licencia Corporativa: 01167079"></span>
+    </div>
+    <div class="contact-person">
+      <strong>Fernando Perez</strong>
+      <span class="i18n" data-en="Loan Officer, NMLS #1011109" data-es="Agente de Préstamos, NMLS #1011109"></span>
+      <span>Alterra Home Loans, 17046 Devonshire Street, Northridge, CA 91325</span>
+      <span class="i18n" data-en="Company NMLS #133739" data-es="NMLS de la Empresa #133739"></span>
+    </div>
   </div>
+
+  <div class="compliance-badges">
+    <div class="compliance-badge">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="3" stroke="#1C2B3A" stroke-width="1.4"/>
+        <path d="M8 21 20 10l12 11" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11 19v11h18V19" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="15" y1="24.5" x2="25" y2="24.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="15" y1="27.5" x2="25" y2="27.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="compliance-badge-title i18n" data-en="Equal Housing Opportunity" data-es="Igualdad de Oportunidad de Vivienda"></div>
+        <div class="compliance-badge-body i18n" data-en="In accordance with the Federal Fair Housing Act." data-es="Conforme con la Ley Federal de Vivienda Justa."></div>
+      </div>
+    </div>
+
+    <div class="compliance-badge">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="3" stroke="#1C2B3A" stroke-width="1.4"/>
+        <path d="M8 21 20 10l12 11" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11 19v11h18V19" stroke="#1C2B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="15" y1="24.5" x2="25" y2="24.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="15" y1="27.5" x2="25" y2="27.5" stroke="#A8823D" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="compliance-badge-title i18n" data-en="Equal Opportunity Lender" data-es="Prestamista de Igualdad de Oportunidades"></div>
+        <div class="compliance-badge-body i18n" data-en="Alterra Home Loans, NMLS #133739, is an Equal Opportunity Lender." data-es="Alterra Home Loans, NMLS #133739, es un Prestamista de Igualdad de Oportunidades."></div>
+      </div>
+    </div>
+
+    <div class="compliance-badge compliance-badge-logo-item">
+      <img src="realtor-mls-logo.png" alt="REALTOR, Multiple Listing Service" class="compliance-logo-img">
+    </div>
+  </div>
+
+  <p class="footer-fine i18n"
+    data-en="Equal Housing Opportunity. Equal Opportunity Lender. Tools on this site provide preliminary estimates only and are not appraisals, pre-approvals, loan offers, or a lender's determination of eligibility."
+    data-es="Igualdad de Oportunidad de Vivienda. Prestamista de Igualdad de Oportunidades. Las herramientas de este sitio ofrecen estimaciones preliminares únicamente y no son tasaciones, preaprobaciones, ofertas de préstamo, ni una determinación de elegibilidad por parte del prestamista."></p>
 </main>
 
 <script>
