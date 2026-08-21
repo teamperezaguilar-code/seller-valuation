@@ -123,6 +123,31 @@ h1{
 }
 .hero-secondary-link:hover{color:var(--brass);border-color:var(--brass);}
 
+/* mobile fixes: the floating transparent header only works with plenty of
+   room to breathe. On narrow screens it wraps and collides with the
+   headline, so it becomes a normal solid header instead, and the hero's
+   forced height/padding backs off so the calculator isn't pushed way
+   below the fold before someone even sees it. */
+@media(max-width:680px){
+  header{
+    position:relative;
+    background:var(--ink);
+    padding:16px 0;
+  }
+  .hero{
+    min-height:auto;
+    padding:32px 0 48px;
+  }
+  h1{
+    font-size:clamp(2rem,9vw,2.8rem);
+    line-height:1.08;
+    margin-bottom:20px;
+  }
+  .hero-sub{font-size:1rem;}
+  .instrument{padding:22px;}
+  .eyebrow-rule{margin-bottom:16px;}
+}
+
 /* valuation instrument — floats as a bright card against the dark hero */
 .instrument{background:var(--white);border:none;border-radius:3px;padding:34px;box-shadow:0 40px 80px -20px rgba(0,0,0,0.55);}
 .instrument-label{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--pine);margin-bottom:14px;}
